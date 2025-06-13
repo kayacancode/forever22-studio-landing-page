@@ -20,9 +20,14 @@ export const metadata: Metadata = {
   // !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
   // ! copy to /favicon folder
   icons: {
-    icon: '/favicon/favicon.ico',
-    shortcut: '/favicon/favicon-16x16.png',
-    apple: '/favicon/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/svg/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon/favicon.ico',
+    apple: [
+      { url: '/favicon/favicon.ico', sizes: '180x180', type: 'image/x-icon' },
+    ],
   },
   manifest: `/favicon/site.webmanifest`,
   openGraph: {
@@ -55,8 +60,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>{children}</body>
+    <html lang='en' className='scroll-smooth'>
+      <head>
+        {/* Additional favicon links for better browser support */}
+        <link rel='icon' type='image/x-icon' href='/favicon/favicon.ico' />
+        <link rel='icon' type='image/svg+xml' href='/svg/favicon.svg' />
+        <link rel='apple-touch-icon' href='/favicon/favicon.ico' />
+      </head>
+      <body className='font-primary antialiased bg-white'>{children}</body>
     </html>
   );
 }

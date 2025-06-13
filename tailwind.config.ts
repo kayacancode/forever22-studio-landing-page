@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Inter', ...defaultTheme.fontFamily.sans],
+        primary: ['Aeonik Medium', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: {

@@ -1,7 +1,6 @@
 import { LucideIcon } from 'lucide-react';
 import * as React from 'react';
 import { IconType } from 'react-icons';
-import { ImSpinner2 } from 'react-icons/im';
 
 import { cn } from '@/lib/utils';
 
@@ -110,7 +109,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               }
             )}
           >
-            <ImSpinner2 className='animate-spin' />
+            <svg
+              className='animate-spin h-4 w-4'
+              viewBox='0 0 24 24'
+              fill='none'
+            >
+              <circle
+                cx='12'
+                cy='12'
+                r='10'
+                stroke='currentColor'
+                strokeWidth='4'
+                className='opacity-25'
+              />
+              <path
+                fill='currentColor'
+                d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                className='opacity-75'
+              />
+            </svg>
           </div>
         )}
         {LeftIcon && (
@@ -120,16 +137,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               size === 'sm' && 'mr-1.5',
             ])}
           >
-            <LeftIcon
-              size='1em'
-              className={cn(
+            {React.createElement(LeftIcon as any, {
+              size: '1em',
+              className: cn(
                 [
                   size === 'base' && 'md:text-md text-md',
                   size === 'sm' && 'md:text-md text-sm',
                 ],
                 classNames?.leftIcon
-              )}
-            />
+              ),
+            })}
           </div>
         )}
         {children}
@@ -140,16 +157,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               size === 'sm' && 'ml-1.5',
             ])}
           >
-            <RightIcon
-              size='1em'
-              className={cn(
+            {React.createElement(RightIcon as any, {
+              size: '1em',
+              className: cn(
                 [
                   size === 'base' && 'text-md md:text-md',
                   size === 'sm' && 'md:text-md text-sm',
                 ],
                 classNames?.rightIcon
-              )}
-            />
+              ),
+            })}
           </div>
         )}
       </button>

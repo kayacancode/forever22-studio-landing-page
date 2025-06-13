@@ -1,7 +1,7 @@
 export const siteConfig = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'Forever 22 Studio - Development Agency',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+    'Forever 22 Studio is a cutting-edge development agency specializing in web applications, mobile apps, and digital solutions that bring your vision to life.',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://tsnext-tw.thcl.dev',
+  url: 'https://forever22studios.com',
 };
