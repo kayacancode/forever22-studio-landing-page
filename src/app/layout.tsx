@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
-      { url: '/svg/favicon.svg', type: 'image/svg+xml' },
     ],
     shortcut: '/favicon/favicon.ico',
     apple: [
@@ -64,7 +63,6 @@ export default function RootLayout({
       <head>
         {/* Additional favicon links for better browser support */}
         <link rel='icon' type='image/x-icon' href='/favicon/favicon.ico' />
-        <link rel='icon' type='image/svg+xml' href='/svg/favicon.svg' />
         <link rel='apple-touch-icon' href='/favicon/favicon.ico' />
       </head>
       <body className='font-primary antialiased bg-white'>{children}</body>

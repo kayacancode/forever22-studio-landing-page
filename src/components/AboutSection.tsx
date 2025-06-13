@@ -229,41 +229,6 @@ export default function AboutSection() {
             </motion.p>
           </motion.div>
 
-          {/* Orange CTA Shape - Positioned as floating element */}
-          <motion.div
-            className='absolute -bottom-8 -right-8 lg:-bottom-12 lg:-right-12 z-20'
-            initial={{ opacity: 0, scale: 0.8, y: 50 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <motion.a
-              href='https://cal.com/forever22studio/15min'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 rounded-[40px] font-semibold text-lg transition-all duration-300 flex items-center group shadow-2xl'
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get
-              <br />
-              Started
-              <svg
-                className='ml-4 w-6 h-6 transform group-hover:translate-x-2 transition-transform duration-200'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M17 8l4 4m0 0l-4 4m4-4H3'
-                />
-              </svg>
-            </motion.a>
-          </motion.div>
-
           {/* Additional decorative shapes - softer colors */}
           <motion.div
             className='absolute top-12 -left-8 w-32 h-32 bg-gradient-to-br from-orange-200/20 to-orange-300/20 rounded-full blur-xl'

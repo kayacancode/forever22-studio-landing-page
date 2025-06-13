@@ -69,18 +69,26 @@ export default function ProjectsSection() {
     },
   };
 
-  // Calculate max slides based on screen size
-  const getMaxSlides = () => {
-    if (typeof window === 'undefined') return projects.length - 2; // SSR fallback
-    const width = window.innerWidth;
-    if (width < 768) return projects.length - 1; // Mobile: 1 card visible
-    if (width < 1024) return projects.length - 1; // Tablet: 2 cards visible
-    return projects.length - 2; // Desktop: 3 cards visible
-  };
+  // State for tracking if component has mounted (for hydration safety)
+  const [mounted, setMounted] = React.useState(false);
 
-  const [maxSlides, setMaxSlides] = React.useState(getMaxSlides());
+  // Always start with SSR-safe default (allow all projects to be accessible)
+  const [maxSlides, setMaxSlides] = React.useState(projects.length);
 
   React.useEffect(() => {
+    // Calculate max slides based on screen size
+    const getMaxSlides = () => {
+      if (typeof window === 'undefined') return projects.length; // SSR fallback - allow all projects
+      const width = window.innerWidth;
+      if (width < 768) return projects.length; // Mobile: 1 card visible, can slide through all
+      if (width < 1024) return projects.length - 1; // Tablet: 2 cards visible
+      return projects.length - 2; // Desktop: 3 cards visible
+    };
+
+    // Mark as mounted and set actual max slides
+    setMounted(true);
+    setMaxSlides(getMaxSlides());
+
     const handleResize = () => {
       setMaxSlides(getMaxSlides());
       setCurrentSlide(0); // Reset to first slide on resize
@@ -88,7 +96,7 @@ export default function ProjectsSection() {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [projects.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % Math.max(1, maxSlides));
@@ -102,7 +110,7 @@ export default function ProjectsSection() {
 
   // Calculate transform percentage based on screen size
   const getTransformPercentage = () => {
-    if (typeof window === 'undefined') return currentSlide * 33.333; // SSR fallback
+    if (!mounted || typeof window === 'undefined') return currentSlide * 33.333; // SSR-safe default
     const width = window.innerWidth;
     if (width < 768) return currentSlide * 100; // Mobile: 100% per slide
     if (width < 1024) return currentSlide * 50; // Tablet: 50% per slide

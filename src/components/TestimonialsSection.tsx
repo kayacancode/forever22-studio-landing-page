@@ -71,7 +71,7 @@ export default function TestimonialsSection() {
           </motion.div>
 
           <motion.h2
-            className='text-4xl lg:text-6xl font-bold text-gray-900 leading-tight'
+            className='text-2xl sm:text-3xl lg:text-6xl font-bold text-gray-900 leading-tight'
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -126,15 +126,15 @@ export default function TestimonialsSection() {
                   }}
                   transition={{ duration: 0.6 }}
                 >
-                  <div className='max-w-4xl mx-auto'>
+                  <div className='max-w-2xl lg:max-w-4xl mx-auto'>
                     {testimonial.type === 'text' ? (
                       /* Text Testimonial */
-                      <div className='bg-white rounded-3xl p-8 lg:p-12 shadow-xl'>
-                        <div className='flex items-start space-x-6'>
+                      <div className='bg-white rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-12 shadow-xl'>
+                        <div className='flex items-start space-x-3 sm:space-x-6'>
                           {/* Quote Icon */}
                           <div className='flex-shrink-0'>
                             <svg
-                              className='w-12 h-12 text-orange-500'
+                              className='w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-orange-500'
                               fill='currentColor'
                               viewBox='0 0 24 24'
                             >
@@ -144,22 +144,22 @@ export default function TestimonialsSection() {
 
                           <div className='flex-1'>
                             {/* Testimonial Content */}
-                            <blockquote className='text-lg lg:text-xl text-gray-700 leading-relaxed mb-8'>
+                            <blockquote className='text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed mb-4 sm:mb-6 lg:mb-8'>
                               "{testimonial.content}"
                             </blockquote>
 
                             {/* Client Info */}
-                            <div className='flex items-center space-x-4'>
-                              <div className='w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center'>
-                                <span className='text-orange-600 font-bold text-lg'>
+                            <div className='flex items-center space-x-3 sm:space-x-4'>
+                              <div className='w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-full flex items-center justify-center'>
+                                <span className='text-orange-600 font-bold text-sm sm:text-base lg:text-lg'>
                                   {testimonial.client.charAt(0)}
                                 </span>
                               </div>
                               <div>
-                                <div className='font-semibold text-gray-900'>
+                                <div className='font-semibold text-gray-900 text-sm sm:text-base'>
                                   {testimonial.client}
                                 </div>
-                                <div className='text-gray-600'>
+                                <div className='text-gray-600 text-xs sm:text-sm'>
                                   {testimonial.position}
                                 </div>
                               </div>
@@ -169,8 +169,8 @@ export default function TestimonialsSection() {
                       </div>
                     ) : (
                       /* Video Testimonial */
-                      <div className='bg-white rounded-3xl p-8 lg:p-12 shadow-xl'>
-                        <div className='aspect-video rounded-2xl overflow-hidden mb-6 bg-gray-900'>
+                      <div className='bg-white rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-12 shadow-xl'>
+                        <div className='aspect-video rounded-xl lg:rounded-2xl overflow-hidden mb-4 sm:mb-6 bg-gray-900'>
                           <video
                             className='w-full h-full object-cover'
                             controls
@@ -185,17 +185,17 @@ export default function TestimonialsSection() {
                         </div>
 
                         {/* Client Info */}
-                        <div className='flex items-center justify-center space-x-4'>
-                          <div className='w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center'>
-                            <span className='text-orange-600 font-bold text-lg'>
+                        <div className='flex items-center justify-center space-x-3 sm:space-x-4'>
+                          <div className='w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-full flex items-center justify-center'>
+                            <span className='text-orange-600 font-bold text-sm sm:text-base lg:text-lg'>
                               {testimonial.company.charAt(0)}
                             </span>
                           </div>
                           <div className='text-center'>
-                            <div className='font-semibold text-gray-900'>
+                            <div className='font-semibold text-gray-900 text-sm sm:text-base'>
                               {testimonial.company}
                             </div>
-                            <div className='text-gray-600'>
+                            <div className='text-gray-600 text-xs sm:text-sm'>
                               {testimonial.position}
                             </div>
                           </div>

@@ -6,6 +6,7 @@ import AboutSection from '@/components/AboutSection';
 import FooterSection from '@/components/FooterSection';
 import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
+import NetworkSection from '@/components/NetworkSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 
@@ -18,6 +19,7 @@ export default function HomePage() {
       <AboutSection />
       <TestimonialsSection />
       <ProjectsSection />
+      <NetworkSection />
       <FooterSection />
     </main>
   );
