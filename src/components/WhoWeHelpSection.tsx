@@ -35,6 +35,12 @@ export default function WhoWeHelpSection() {
         'Centralize audience data, create real-time analytics dashboards, and manage multi-channel content.',
       icon: '',
     },
+    {
+      title: 'VC & Portfolio Management',
+      description:
+        'Streamline investor updates, portfolio onboarding, and operational workflows to give founders and investors deeper visibility and faster results.',
+      icon: '',
+    },
   ];
 
   return (

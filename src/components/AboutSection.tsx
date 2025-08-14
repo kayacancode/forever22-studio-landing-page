@@ -127,15 +127,14 @@ export default function AboutSection() {
                     viewport={{ once: true }}
                   >
                     At Forever22 Studios, we design custom automation systems
-                    that let creative and media brands work smarter, not harder.
-                    From sports-culture networks to indie music distributors, we
-                    build the tools that handle your busywork—so you can focus
-                    on growing your audience and making an impact. Our projects
-                    have cut production time by up to 70%, boosted engagement by
-                    over 40%, and turned scattered workflows into seamless,
-                    measurable pipelines. Whether you need automated content
-                    creation, audience segmentation, or real-time performance
-                    dashboards, we’re here to help you scale without the grind.
+                    that let creative and media brands work smarter, not
+                    harder.Our clients range form independent creatives to
+                    venture capital firms like Betaworks, where we've built
+                    tools that centralize knowledge, streamline content
+                    creation, and unlock new efficiencies for entire portfolios.
+                    Our projects have cut production time by up to 70%, boosted
+                    engagement by over 40%, and turned scattered workflows into
+                    seamless, measurable pipelines.
                   </motion.p>
                 </div>
               </div>

@@ -83,10 +83,10 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           Custom <strong>content automation workflows</strong> for{' '}
-          <strong>music platforms</strong>, <strong>sports media</strong>, and{' '}
-          <strong>entertainment brands</strong>—designed to save time and scale{' '}
-          <strong>audience engagement</strong> through intelligent automation
-          solutions.
+          <strong>music platforms</strong>, <strong>sports media</strong>{' '}
+          <strong>entertainment brands</strong> , and{' '}
+          <strong>venture-backed companies </strong>—designed to save time and
+          scale <strong>audience engagement</strong> across entire portoflio.
         </motion.h2>
 
         {/* CTA Button */}

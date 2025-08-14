@@ -45,6 +45,12 @@ export default function WhatWeDoSection() {
       description: 'Push content to web, social, and email with one workflow.',
       icon: '🌐',
     },
+    {
+      title: 'VC & Portfolio Management',
+      description:
+        'Streamline investor updates, portfolio onboarding, and operational workflows to give founders and investors deeper visibility and faster results.',
+      icon: '🌐',
+    },
   ];
 
   return (
