@@ -1,11 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import * as React from 'react';
 
 export default function AboutSection() {
-  const statsVariants = {
+  const _statsVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,7 +15,7 @@ export default function AboutSection() {
     },
   };
 
-  const statItemVariants = {
+  const _statItemVariants = {
     hidden: { opacity: 0, y: 20, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -127,106 +126,20 @@ export default function AboutSection() {
                     transition={{ duration: 0.6, delay: 1 }}
                     viewport={{ once: true }}
                   >
-                    FOREVER 22 Studio, LLC. is a full service technology agency
-                    specializing in helping{' '}
-                    <span className='text-orange-600 font-semibold'>
-                      businesses
-                    </span>
-                    ,{' '}
-                    <span className='text-orange-600 font-semibold'>
-                      athletes
-                    </span>
-                    ,{' '}
-                    <span className='text-orange-600 font-semibold'>
-                      artists
-                    </span>
-                    , and{' '}
-                    <span className='text-orange-600 font-semibold'>
-                      founders
-                    </span>{' '}
-                    bring their digital visions to life. We pride ourselves in
-                    being transparent and having excellent communication open to
-                    all clientele. Choosing forever22, you entrust us to bring
-                    your idea to life. With that trust, we hold that dear to us
-                    and make sure to help create your idea. We work with any
-                    sort of client: Big or small, established or starting. We
-                    will be with you at every step of the way to build something
-                    that has imprints on others forever.
+                    At Forever22 Studios, we design custom automation systems
+                    that let creative and media brands work smarter, not harder.
+                    From sports-culture networks to indie music distributors, we
+                    build the tools that handle your busywork—so you can focus
+                    on growing your audience and making an impact. Our projects
+                    have cut production time by up to 70%, boosted engagement by
+                    over 40%, and turned scattered workflows into seamless,
+                    measurable pipelines. Whether you need automated content
+                    creation, audience segmentation, or real-time performance
+                    dashboards, we’re here to help you scale without the grind.
                   </motion.p>
-
-                  {/* Stats Grid */}
-                  <motion.div
-                    className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8'
-                    variants={statsVariants}
-                    initial='hidden'
-                    whileInView='visible'
-                    viewport={{ once: true, margin: '-50px' }}
-                  >
-                    {[{ number: '5★', label: 'Rating' }].map((stat, index) => (
-                      <motion.div
-                        key={index}
-                        className='text-center space-y-2'
-                        variants={statItemVariants}
-                        whileHover={{ scale: 1.1, y: -5 }}
-                      >
-                        <motion.h4
-                          className='text-2xl lg:text-3xl font-bold text-gray-900'
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{
-                            duration: 0.6,
-                            delay: 1.2 + index * 0.1,
-                          }}
-                          viewport={{ once: true }}
-                        >
-                          {stat.number}
-                        </motion.h4>
-                        <p className='text-gray-600 text-sm font-medium'>
-                          {stat.label}
-                        </p>
-                      </motion.div>
-                    ))}
-                  </motion.div>
                 </div>
               </div>
             </div>
-          </motion.div>
-
-          {/* Founder Profile Section */}
-          <motion.div
-            className='mt-16 text-center'
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <motion.div
-              className='relative inline-block'
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className='relative w-32 h-32 mx-auto mb-4'>
-                <div className='absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full'></div>
-                <div className='absolute inset-1 bg-white rounded-full overflow-hidden'>
-                  <Image
-                    src='/images/kayaanime.png'
-                    alt='Kaya Jones - Founder and CEO'
-                    fill
-                    className='object-cover rounded-full'
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.p
-              className='text-gray-700 font-medium text-lg'
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              viewport={{ once: true }}
-            >
-              Founder and CEO Kaya Jones
-            </motion.p>
           </motion.div>
 
           {/* Additional decorative shapes - softer colors */}

@@ -234,7 +234,7 @@ export default function NetworkSection() {
             professionals to collaborate with.
           </motion.p>
           <motion.a
-            href='https://cal.com/forever22studio/15min'
+            href='https://calendar.app.google/dtx9EHNNdEQ4upHH7'
             target='_blank'
             rel='noopener noreferrer'
             className='inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 shadow-lg'

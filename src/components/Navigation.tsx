@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence,motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -63,9 +63,8 @@ export default function Navigation() {
                 </svg>
               </button>
             </div>
-
-            {/* Desktop Left: About & Clients - Hidden on mobile */}
-            <div className='hidden md:flex items-center space-x-4'>
+            {/* Centered navigation items - Hidden on mobile */}
+            <div className='hidden md:flex items-center justify-center flex-1 space-x-4'>
               <Link
                 href='/#about'
                 className='text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium px-4 py-1 rounded-full border border-gray-300 hover:border-gray-400'
@@ -73,25 +72,17 @@ export default function Navigation() {
                 About
               </Link>
               <Link
+                href='/sports-music-automation'
+                className='text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium px-4 py-1 rounded-full border border-gray-300 hover:border-gray-400'
+              >
+                Sports & Music
+              </Link>
+              <Link
                 href='/#projects'
                 className='text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium px-4 py-1 rounded-full border border-gray-300 hover:border-gray-400'
               >
                 Clients
               </Link>
-            </div>
-
-            {/* Center: Logo - Always visible */}
-            <div className='flex-1 flex justify-center md:justify-center'>
-              <Link
-                href='/'
-                className='text-gray-900 font-bold text-lg md:text-xl tracking-tight'
-              >
-                Forever 22 Studio
-              </Link>
-            </div>
-
-            {/* Desktop Right: Projects & Say hello - Hidden on mobile */}
-            <div className='hidden md:flex items-center space-x-4'>
               <Link
                 href='/#projects'
                 className='text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium px-4 py-1 rounded-full border border-gray-300 hover:border-gray-400'
@@ -99,7 +90,7 @@ export default function Navigation() {
                 Projects
               </Link>
               <Link
-                href='https://cal.com/forever22studio/15min'
+                href='https://calendar.app.google/dtx9EHNNdEQ4upHH7'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200 shadow-md'
@@ -107,11 +98,10 @@ export default function Navigation() {
                 Say hello
               </Link>
             </div>
-
             {/* Mobile CTA button - Always visible on mobile */}
             <div className='md:hidden'>
               <Link
-                href='https://cal.com/forever22studio/15min'
+                href='https://calendar.app.google/dtx9EHNNdEQ4upHH7'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium transition-colors duration-200 shadow-md'
@@ -151,6 +141,13 @@ export default function Navigation() {
                   className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200'
                 >
                   About
+                </Link>
+                <Link
+                  href='/sports-music-automation'
+                  onClick={closeMobileMenu}
+                  className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200'
+                >
+                  Sports & Music
                 </Link>
                 <Link
                   href='/#projects'

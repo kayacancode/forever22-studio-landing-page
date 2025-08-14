@@ -9,6 +9,8 @@ import Navigation from '@/components/Navigation';
 import NetworkSection from '@/components/NetworkSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import WhatWeDoSection from '@/components/WhatWeDoSection';
+import WhoWeHelpSection from '@/components/WhoWeHelpSection';
 
 export default function HomePage() {
   return (
@@ -17,6 +19,8 @@ export default function HomePage() {
       <HeroSection />
       {/* <TrustedSection /> */}
       <AboutSection />
+      <WhoWeHelpSection />
+      <WhatWeDoSection />
       <TestimonialsSection />
       <ProjectsSection />
       <NetworkSection />

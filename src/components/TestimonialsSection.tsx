@@ -11,7 +11,7 @@ export default function TestimonialsSection() {
       id: 1,
       type: 'text',
       content:
-        "I'm thrilled with the results of Kaya's work. She executed every phase—from discovery and planning through data ingestion and article drafting—with precision and ease. Her communication was crystal clear, deadlines were met exactly as promised, and the final deliverables reflect exceptional thoughtfulness and care. Kaya turned what could have been a complex project into something effortlessly manageable.",
+        "I'm thrilled with the results. They executed every phase—from discovery and planning through data ingestion and article drafting—with precision and ease. Their communication was crystal clear, deadlines were met exactly as promised, and the final deliverables reflect exceptional thoughtfulness and care. Forever22 turned what could have been a complex project into something effortlessly manageable.",
       client: 'Kontiji Anthony',
       position: 'CEO of Youdle',
       company: 'Youdle',
@@ -24,18 +24,21 @@ export default function TestimonialsSection() {
       client: 'Thryve AI',
       position: 'Client Testimonial',
       company: 'Thryve AI',
-      image: '/images/tenniscourt.webp',
     },
   ];
 
-  // Auto-advance carousel
+  // Auto-advance carousel with pause on hover
+  const [isPaused, setIsPaused] = React.useState(false);
+
   React.useEffect(() => {
+    if (isPaused) return;
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % testimonials.length);
     }, 8000); // Change slide every 8 seconds
 
     return () => clearInterval(interval);
-  }, [testimonials.length]);
+  }, [testimonials.length, isPaused]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % testimonials.length);
@@ -109,11 +112,14 @@ export default function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <div className='overflow-hidden'>
             <motion.div
-              className='flex transition-transform duration-700 ease-in-out'
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              className='flex'
+              animate={{ x: `-${currentSlide * 100}%` }}
+              transition={{ duration: 0.7, ease: 'easeInOut' }}
             >
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -171,17 +177,36 @@ export default function TestimonialsSection() {
                       /* Video Testimonial */
                       <div className='bg-white rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-12 shadow-xl'>
                         <div className='aspect-video rounded-xl lg:rounded-2xl overflow-hidden mb-4 sm:mb-6 bg-gray-900'>
-                          <video
-                            className='w-full h-full object-cover'
-                            controls
-                            poster={testimonial.image}
-                          >
-                            <source
-                              src={testimonial.videoSrc}
-                              type='video/mp4'
-                            />
-                            Your browser does not support the video tag.
-                          </video>
+                          {testimonial.videoSrc ? (
+                            <video
+                              className='w-full h-full object-cover'
+                              controls
+                              preload='metadata'
+                              poster={testimonial.image}
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                              }}
+                            >
+                              <source
+                                src={testimonial.videoSrc}
+                                type='video/mp4'
+                              />
+                              Your browser does not support the video tag.
+                            </video>
+                          ) : (
+                            <div className='w-full h-full flex items-center justify-center text-gray-400'>
+                              <div className='text-center'>
+                                <svg
+                                  className='w-16 h-16 mx-auto mb-4'
+                                  fill='currentColor'
+                                  viewBox='0 0 24 24'
+                                >
+                                  <path d='M8 5v14l11-7z' />
+                                </svg>
+                                <p>Video not available</p>
+                              </div>
+                            </div>
+                          )}
                         </div>
 
                         {/* Client Info */}
@@ -208,77 +233,83 @@ export default function TestimonialsSection() {
             </motion.div>
           </div>
 
-          {/* Navigation Arrows */}
-          <motion.div
-            className='flex justify-center space-x-4 mt-12'
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <motion.button
-              onClick={prevSlide}
-              className='w-12 h-12 bg-white hover:bg-gray-50 rounded-full flex items-center justify-center text-gray-700 transition-colors duration-200 shadow-lg group'
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+          {/* Navigation Arrows - Only show if multiple testimonials */}
+          {testimonials.length > 1 && (
+            <motion.div
+              className='flex justify-center space-x-4 mt-12'
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
             >
-              <svg
-                className='w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-200'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M15 19l-7-7 7-7'
-                />
-              </svg>
-            </motion.button>
-
-            <motion.button
-              onClick={nextSlide}
-              className='w-12 h-12 bg-white hover:bg-gray-50 rounded-full flex items-center justify-center text-gray-700 transition-colors duration-200 shadow-lg group'
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <svg
-                className='w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M9 5l7 7-7 7'
-                />
-              </svg>
-            </motion.button>
-          </motion.div>
-
-          {/* Slide Indicators */}
-          <motion.div
-            className='flex justify-center space-x-2 mt-6'
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            viewport={{ once: true }}
-          >
-            {testimonials.map((_, index) => (
               <motion.button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                  index === currentSlide ? 'bg-orange-500' : 'bg-gray-300'
-                }`}
-                whileHover={{ scale: 1.3 }}
+                onClick={prevSlide}
+                className='w-12 h-12 bg-white hover:bg-gray-50 rounded-full flex items-center justify-center text-gray-700 transition-colors duration-200 shadow-lg group disabled:opacity-50 disabled:cursor-not-allowed'
+                disabled={testimonials.length <= 1}
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-              />
-            ))}
-          </motion.div>
+              >
+                <svg
+                  className='w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-200'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M15 19l-7-7 7-7'
+                  />
+                </svg>
+              </motion.button>
+
+              <motion.button
+                onClick={nextSlide}
+                className='w-12 h-12 bg-white hover:bg-gray-50 rounded-full flex items-center justify-center text-gray-700 transition-colors duration-200 shadow-lg group disabled:opacity-50 disabled:cursor-not-allowed'
+                disabled={testimonials.length <= 1}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <svg
+                  className='w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M9 5l7 7-7 7'
+                  />
+                </svg>
+              </motion.button>
+            </motion.div>
+          )}
+
+          {/* Slide Indicators - Only show if multiple testimonials */}
+          {testimonials.length > 1 && (
+            <motion.div
+              className='flex justify-center space-x-2 mt-6'
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              viewport={{ once: true }}
+            >
+              {testimonials.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                    index === currentSlide ? 'bg-orange-500' : 'bg-gray-300'
+                  }`}
+                  whileHover={{ scale: 1.3 }}
+                  whileTap={{ scale: 0.9 }}
+                />
+              ))}
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>

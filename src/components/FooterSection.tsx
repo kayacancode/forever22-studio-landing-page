@@ -5,7 +5,7 @@ import Link from 'next/link';
 import * as React from 'react';
 
 export default function FooterSection() {
-  const partnerLogos = [
+  const _partnerLogos = [
     { name: 'TechCorp', logo: '/images/logo1.png', alt: 'TechCorp' },
     {
       name: 'Innovate Labs',
@@ -26,7 +26,7 @@ export default function FooterSection() {
     { name: 'CodeBase', logo: '/images/iconlogo.png', alt: 'CodeBase' },
   ];
 
-  const containerVariants = {
+  const _containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -37,7 +37,7 @@ export default function FooterSection() {
     },
   };
 
-  const logoVariants = {
+  const _logoVariants = {
     hidden: { opacity: 0, y: 20, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -121,7 +121,7 @@ export default function FooterSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              {['About', 'Clients', 'Projects'].map((item, index) => (
+              {['About', 'Clients', 'Projects'].map((item, _index) => (
                 <motion.div key={item} whileHover={{ x: 5 }}>
                   <Link
                     href={`#${item.toLowerCase()}`}
@@ -132,35 +132,6 @@ export default function FooterSection() {
                 </motion.div>
               ))}
             </motion.nav>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <motion.button
-                className='bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors duration-200 flex items-center group'
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Share your vision
-                <svg
-                  className='ml-3 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M17 8l4 4m0 0l-4 4m4-4H3'
-                  />
-                </svg>
-              </motion.button>
-            </motion.div>
           </motion.div>
 
           {/* Large Company Name */}
@@ -172,7 +143,7 @@ export default function FooterSection() {
             viewport={{ once: true }}
           >
             <h2 className='text-6xl md:text-8xl lg:text-9xl font-bold text-slate-900 leading-none tracking-tight'>
-              Forever 22 Studio
+              Forever22
               <motion.span
                 className='inline-block ml-4'
                 animate={{ rotate: [0, 360] }}
@@ -252,8 +223,7 @@ export default function FooterSection() {
             viewport={{ once: true }}
           >
             <p className='text-slate-900/60 text-sm'>
-              © {new Date().getFullYear()} Forever 22 Studio. All rights
-              reserved.
+              © {new Date().getFullYear()} Forever22 LLC. All rights reserved.
             </p>
           </motion.div>
         </div>

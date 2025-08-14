@@ -7,8 +7,6 @@ import '@/styles/colors.css';
 
 import { siteConfig } from '@/constant/config';
 
-// !STARTERCONF Change these default meta
-// !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -16,41 +14,74 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.title}`,
   },
   description: siteConfig.description,
-  robots: { index: true, follow: true },
-  // !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
-  // ! copy to /favicon folder
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author, url: siteConfig.url }],
+  creator: siteConfig.author,
+  publisher: siteConfig.company.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Add when you have Google Search Console set up
+    // google: 'your-google-site-verification-code',
+  },
+  category: siteConfig.company.industry,
+  classification: 'business',
   icons: {
     icon: [
       { url: '/favicon/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
     shortcut: '/favicon/favicon.ico',
     apple: [
-      { url: '/favicon/favicon.ico', sizes: '180x180', type: 'image/x-icon' },
+      {
+        url: '/favicon/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
     ],
   },
   manifest: `/favicon/site.webmanifest`,
   openGraph: {
-    url: siteConfig.url,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    siteName: siteConfig.title,
-    images: [`${siteConfig.url}/images/logo1.png`],
     type: 'website',
     locale: 'en_US',
+    url: siteConfig.url,
+    siteName: siteConfig.company.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: `${siteConfig.url}/images/logo1.png`,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.company.name} - Content Automation & Brand Amplification`,
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@forever22studio',
+    creator: '@forever22studio',
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/images/logo1.png`],
-    // creator: '@th_clarence',
+    images: {
+      url: `${siteConfig.url}/images/logo1.png`,
+      alt: `${siteConfig.company.name} Logo`,
+    },
   },
-  // authors: [
-  //   {
-  //     name: 'Theodorus Clarence',
-  //     url: 'https://theodorusclarence.com',
-  //   },
-  // ],
+  alternates: {
+    canonical: siteConfig.url,
+  },
 };
 
 export default function RootLayout({
@@ -64,6 +95,74 @@ export default function RootLayout({
         {/* Additional favicon links for better browser support */}
         <link rel='icon' type='image/x-icon' href='/favicon/favicon.ico' />
         <link rel='apple-touch-icon' href='/favicon/favicon.ico' />
+
+        {/* Structured Data */}
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: siteConfig.company.name,
+              legalName: siteConfig.company.legalName,
+              description: siteConfig.company.description,
+              url: siteConfig.url,
+              logo: `${siteConfig.url}/images/logo1.png`,
+              image: `${siteConfig.url}/images/logo1.png`,
+              foundingDate: siteConfig.company.foundedYear,
+              industry: siteConfig.company.industry,
+              knowsAbout: siteConfig.company.services,
+              serviceArea: {
+                '@type': 'Place',
+                name: 'Global',
+              },
+              areaServed: 'Worldwide',
+              offers: siteConfig.company.services.map((service) => ({
+                '@type': 'Service',
+                name: service,
+                provider: {
+                  '@type': 'Organization',
+                  name: siteConfig.company.name,
+                },
+              })),
+              contactPoint: {
+                '@type': 'ContactPoint',
+                url: 'https://calendar.app.google/dtx9EHNNdEQ4upHH7',
+                contactType: 'Customer Service',
+              },
+              sameAs: [
+                // Add your social media URLs here when available
+                // 'https://twitter.com/forever22studio',
+                // 'https://linkedin.com/company/forever22studio',
+                // 'https://instagram.com/forever22studio'
+              ],
+            }),
+          }}
+        />
+
+        {/* Website structured data */}
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: siteConfig.title,
+              description: siteConfig.description,
+              url: siteConfig.url,
+              publisher: {
+                '@type': 'Organization',
+                name: siteConfig.company.name,
+                logo: `${siteConfig.url}/images/logo1.png`,
+              },
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: `${siteConfig.url}/?s={search_term_string}`,
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
       </head>
       <body className='font-primary antialiased bg-white'>{children}</body>
     </html>
