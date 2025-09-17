@@ -7,7 +7,7 @@ import FooterSection from '@/components/FooterSection';
 import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
 import OurApproachSection from '@/components/OurApproachSection';
-import PastPerformanceSection from '@/components/PastPerformanceSection';
+import FeaturedProjectsSection from '@/components/PastPerformanceSection';
 import WhyForever22Section from '@/components/WhyForever22Section';
 
 export default function HomePage() {
@@ -18,7 +18,7 @@ export default function HomePage() {
       <OurApproachSection />
       <CoreCapabilitiesSection />
       <WhyForever22Section />
-      <PastPerformanceSection />
+      <FeaturedProjectsSection />
       <FooterSection />
     </main>
   );
