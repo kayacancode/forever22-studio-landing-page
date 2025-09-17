@@ -11,10 +11,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteConfig.url}/sports-music-automation`,
+      url: `${siteConfig.url}/community`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
+    },
+    {
+      url: `${siteConfig.url}/sports-music-automation`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.6,
     },
     // Add more pages as you create them
     // {
