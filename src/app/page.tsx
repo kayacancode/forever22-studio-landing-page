@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 
+import AboutUsSection from '@/components/AboutUsSection';
 import CoreCapabilitiesSection from '@/components/CoreCapabilitiesSection';
 import FooterSection from '@/components/FooterSection';
 import HeroSection from '@/components/HeroSection';
@@ -15,6 +16,7 @@ export default function HomePage() {
     <main className='min-h-screen'>
       <Navigation />
       <HeroSection />
+      <AboutUsSection />
       <OurApproachSection />
       <CoreCapabilitiesSection />
       <WhyForever22Section />
