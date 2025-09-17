@@ -80,11 +80,10 @@ export default function AboutUsSection() {
                 <p>
                   Forever 22 was founded by Kaya Jones, a computer scientist and
                   entrepreneur who began building software while competing as a
-                  student-athlete and working in organizations like NASA.
-                  Instead of following a corporate track, Kaya launched Forever
-                  22 to serve as a venture studio and development partner,
-                  focused on combining automation, AI, and software innovation
-                  to create lasting impact.
+                  student-athlete and working in organizations like NASA. Kaya
+                  launched Forever 22 to serve as a venture studio and
+                  development partner, focused on combining automation, AI, and
+                  software innovation to create lasting impact.
                 </p>
 
                 <p>
