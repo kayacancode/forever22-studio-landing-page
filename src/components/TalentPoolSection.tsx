@@ -124,7 +124,7 @@ export default function TalentPoolSection() {
 
               {/* Apply Button */}
               <motion.a
-                href='https://calendar.app.google/dtx9EHNNdEQ4upHH7'
+                href='https://tally.so/r/woJWz1'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='inline-flex items-center bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg'
