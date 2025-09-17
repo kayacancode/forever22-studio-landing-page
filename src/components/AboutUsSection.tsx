@@ -112,7 +112,7 @@ export default function AboutUsSection() {
               </motion.div>
             </motion.div>
 
-            {/* Right Column - Image */}
+            {/* Right Column - LinkedIn Link */}
             <motion.div
               className='relative'
               initial={{ opacity: 0, x: 30 }}
@@ -120,26 +120,25 @@ export default function AboutUsSection() {
               transition={{ duration: 0.6, delay: 0.7 }}
               viewport={{ once: true }}
             >
-              <div className='aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden'>
-                {/* Placeholder for image - you can replace this with an actual image */}
-                <div className='w-full h-full flex items-center justify-center'>
-                  <div className='text-center text-gray-500'>
-                    <svg
-                      className='w-16 h-16 mx-auto mb-4 text-gray-400'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      stroke='currentColor'
-                    >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth={1}
-                        d='M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'
-                      />
-                    </svg>
-                    <p className='text-sm'>Image placeholder</p>
-                  </div>
-                </div>
+              <div className='aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden flex items-center justify-center'>
+                <motion.a
+                  href='https://www.linkedin.com/in/kayarjones/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-center text-gray-700 hover:text-orange-500 transition-colors duration-300'
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg
+                    className='w-16 h-16 mx-auto mb-4 text-current'
+                    fill='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' />
+                  </svg>
+                  <p className='text-lg font-medium'>Connect with Kaya</p>
+                  <p className='text-sm opacity-75'>LinkedIn Profile</p>
+                </motion.a>
               </div>
             </motion.div>
           </div>
