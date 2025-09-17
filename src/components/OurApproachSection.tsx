@@ -85,62 +85,127 @@ export default function OurApproachSection() {
         </motion.div>
 
         {/* Canvas with cards and connectors */}
-        <div className='relative rounded-3xl bg-white shadow-xl ring-1 ring-gray-200 p-6 sm:p-10'>
+        <div className='relative rounded-3xl bg-white shadow-xl ring-1 ring-gray-200 p-6 sm:p-10 overflow-visible'>
           {/* connectors */}
-          <svg
-            className='absolute inset-0 w-full h-full'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M30,140 C220,120 340,60 520,100'
-              stroke='#D1D5DB'
-              strokeWidth='2'
-              strokeDasharray='6 6'
-              fill='none'
-            />
-            <path
-              d='M520,220 C340,260 220,220 60,280'
-              stroke='#D1D5DB'
-              strokeWidth='2'
-              strokeDasharray='6 6'
-              fill='none'
-            />
-          </svg>
-
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative'>
+          {/* Mobile: stacked large cards */}
+          <div className='md:hidden space-y-6'>
             {steps.map((step, index) => (
               <motion.div
                 key={step.id}
-                className={`relative ${step.rotate}`}
-                initial={{
-                  opacity: 0,
-                  y: 30,
-                  rotate: index % 2 === 0 ? -6 : 6,
-                }}
-                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className='relative w-full max-w-[420px] mx-auto'
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                {/* pin */}
                 <div
-                  className={`absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 ${step.pin} rounded-full shadow-md`}
+                  className={`absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 ${steps[index].pin} rounded-full shadow-md`}
                 />
-                {/* card */}
                 <div
-                  className={`rounded-2xl bg-gradient-to-br ${step.tone} p-5 sm:p-6 border border-white shadow-md`}
+                  className={`rounded-2xl bg-gradient-to-br ${steps[index].tone} p-6 border border-white shadow-md`}
                 >
                   <div className='text-sm font-semibold text-gray-500 mb-2'>
-                    {step.id}
+                    {steps[index].id}
                   </div>
                   <h3 className='text-2xl font-bold text-gray-900 mb-2'>
-                    {step.title}
+                    {steps[index].title}
                   </h3>
                   <p className='text-gray-600 leading-relaxed'>
-                    {step.description}
+                    {steps[index].description}
                   </p>
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Desktop: tall canvas with staggered absolute cards that you scroll through */}
+          <div className='hidden md:block relative min-h-[140vh]'>
+            {/* curved connectors tailored to positions below */}
+            <svg
+              className='absolute inset-0 w-full h-full'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M18,220 C220,160 360,120 610,190'
+                stroke='#D1D5DB'
+                strokeWidth='2'
+                strokeDasharray='6 6'
+                fill='none'
+              />
+              <path
+                d='M610,420 C420,500 240,520 80,600'
+                stroke='#D1D5DB'
+                strokeWidth='2'
+                strokeDasharray='6 6'
+                fill='none'
+              />
+            </svg>
+
+            {/* card 1 */}
+            <motion.div
+              className='absolute left-[6%] top-[6%] w-[420px]'
+              initial={{ opacity: 0, y: 40, rotate: -4 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+            >
+              <div className='absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-orange-500 rounded-full shadow-md' />
+              <div className='rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 p-6 border border-white shadow-md'>
+                <div className='text-sm font-semibold text-gray-500 mb-2'>
+                  01
+                </div>
+                <h3 className='text-3xl font-bold text-gray-900 mb-2'>
+                  Identify
+                </h3>
+                <p className='text-gray-600 leading-relaxed'>
+                  Workflows, pain points, and growth opportunities.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* card 2 */}
+            <motion.div
+              className='absolute right-[8%] top-[32%] w-[420px]'
+              initial={{ opacity: 0, y: 40, rotate: 4 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+            >
+              <div className='absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-indigo-500 rounded-full shadow-md' />
+              <div className='rounded-2xl bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 border border-white shadow-md'>
+                <div className='text-sm font-semibold text-gray-500 mb-2'>
+                  02
+                </div>
+                <h3 className='text-3xl font-bold text-gray-900 mb-2'>
+                  Design
+                </h3>
+                <p className='text-gray-600 leading-relaxed'>
+                  Secure, scalable systems and clear architecture.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* card 3 */}
+            <motion.div
+              className='absolute left-[18%] top-[66%] w-[420px]'
+              initial={{ opacity: 0, y: 40, rotate: -3 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+            >
+              <div className='absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-violet-500 rounded-full shadow-md' />
+              <div className='rounded-2xl bg-gradient-to-br from-violet-50 to-violet-100 p-6 border border-white shadow-md'>
+                <div className='text-sm font-semibold text-gray-500 mb-2'>
+                  03
+                </div>
+                <h3 className='text-3xl font-bold text-gray-900 mb-2'>
+                  Deliver
+                </h3>
+                <p className='text-gray-600 leading-relaxed'>
+                  Build, deploy, and support AI-powered products.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
 
