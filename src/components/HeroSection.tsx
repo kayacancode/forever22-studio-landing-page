@@ -30,15 +30,7 @@ export default function HeroSection() {
               </h1>
             </motion.div>
 
-            {/* Subtitle */}
-            <motion.h2
-              className='text-lg sm:text-xl md:text-2xl text-black mb-8 font-medium'
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              AI-Powered Product Studio
-            </motion.h2>
+            {/* Subtitle removed per request */}
 
             {/* Description */}
             <motion.p
