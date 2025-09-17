@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: `${siteConfig.url}/images/logo1.png`,
+        url: `${siteConfig.url}/images/logo1.png?v=2`,
         width: 1200,
         height: 630,
         alt: `${siteConfig.company.name} - AI-Powered Product Studio`,
