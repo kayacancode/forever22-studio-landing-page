@@ -72,22 +72,16 @@ export default function Navigation() {
                 About
               </Link>
               <Link
-                href='/sports-music-automation'
-                className='text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium px-4 py-1 rounded-full border border-gray-300 hover:border-gray-400'
-              >
-                Sports & Music
-              </Link>
-              <Link
                 href='/#projects'
                 className='text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium px-4 py-1 rounded-full border border-gray-300 hover:border-gray-400'
               >
-                Clients
+                Jobs
               </Link>
               <Link
-                href='/#projects'
+                href='/community'
                 className='text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium px-4 py-1 rounded-full border border-gray-300 hover:border-gray-400'
               >
-                Projects
+                Community
               </Link>
               <Link
                 href='https://calendar.app.google/dtx9EHNNdEQ4upHH7'
@@ -143,25 +137,18 @@ export default function Navigation() {
                   About
                 </Link>
                 <Link
-                  href='/sports-music-automation'
-                  onClick={closeMobileMenu}
-                  className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200'
-                >
-                  Sports & Music
-                </Link>
-                <Link
                   href='/#projects'
                   onClick={closeMobileMenu}
                   className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200'
                 >
-                  Clients
+                  Jobs
                 </Link>
                 <Link
-                  href='/#projects'
+                  href='/community'
                   onClick={closeMobileMenu}
                   className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200'
                 >
-                  Projects
+                  Community
                 </Link>
               </div>
             </motion.div>
