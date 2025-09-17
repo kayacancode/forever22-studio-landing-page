@@ -2,28 +2,27 @@
 
 import * as React from 'react';
 
-import AboutSection from '@/components/AboutSection';
+import AboutUsSection from '@/components/AboutUsSection';
+import CoreCapabilitiesSection from '@/components/CoreCapabilitiesSection';
 import FooterSection from '@/components/FooterSection';
 import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
-import NetworkSection from '@/components/NetworkSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import WhatWeDoSection from '@/components/WhatWeDoSection';
-import WhoWeHelpSection from '@/components/WhoWeHelpSection';
+import OurApproachSection from '@/components/OurApproachSection';
+import FeaturedProjectsSection from '@/components/PastPerformanceSection';
+import TalentPoolSection from '@/components/TalentPoolSection';
+import WhyForever22Section from '@/components/WhyForever22Section';
 
 export default function HomePage() {
   return (
     <main className='min-h-screen'>
       <Navigation />
       <HeroSection />
-      {/* <TrustedSection /> */}
-      <AboutSection />
-      <WhoWeHelpSection />
-      <WhatWeDoSection />
-      <TestimonialsSection />
-      <ProjectsSection />
-      <NetworkSection />
+      <AboutUsSection />
+      <OurApproachSection />
+      <CoreCapabilitiesSection />
+      <WhyForever22Section />
+      <FeaturedProjectsSection />
+      <TalentPoolSection />
       <FooterSection />
     </main>
   );
