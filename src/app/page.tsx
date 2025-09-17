@@ -9,6 +9,7 @@ import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
 import OurApproachSection from '@/components/OurApproachSection';
 import FeaturedProjectsSection from '@/components/PastPerformanceSection';
+import TalentPoolSection from '@/components/TalentPoolSection';
 import WhyForever22Section from '@/components/WhyForever22Section';
 
 export default function HomePage() {
@@ -21,6 +22,7 @@ export default function HomePage() {
       <CoreCapabilitiesSection />
       <WhyForever22Section />
       <FeaturedProjectsSection />
+      <TalentPoolSection />
       <FooterSection />
     </main>
   );
