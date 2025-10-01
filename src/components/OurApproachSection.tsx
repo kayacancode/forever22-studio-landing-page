@@ -7,24 +7,25 @@ export default function OurApproachSection() {
   const steps = [
     {
       id: '01',
-      title: 'Identify',
-      description: 'Workflows, pain points, and growth opportunities.',
+      title: 'Consulting & Discovery',
+      description: 'Identify workflows that can be automated or productized.',
       tone: 'from-orange-50 to-orange-100',
       pin: 'bg-orange-500',
       rotate: '-rotate-3',
     },
     {
       id: '02',
-      title: 'Design',
-      description: 'Secure, scalable systems and clear architecture.',
+      title: 'Build & Launch',
+      description: 'Deliver the first working automation/SaaS.',
       tone: 'from-indigo-50 to-indigo-100',
       pin: 'bg-indigo-500',
       rotate: 'rotate-2',
     },
     {
       id: '03',
-      title: 'Deliver',
-      description: 'Build, deploy, and support AI-powered products.',
+      title: 'Productize & Scale',
+      description:
+        'White-label it, add profiles + payments, and transform it into a SaaS business.',
       tone: 'from-violet-50 to-violet-100',
       pin: 'bg-violet-500',
       rotate: '-rotate-1',
@@ -79,9 +80,6 @@ export default function OurApproachSection() {
             <br className='hidden sm:block' />
             <span className='whitespace-nowrap'>Step by Step</span>
           </h2>
-          <p className='mt-6 text-gray-600 text-lg sm:text-xl max-w-2xl mx-auto'>
-            From the first step to launch, we focus on outcomes—not buzzwords.
-          </p>
         </motion.div>
 
         {/* Canvas with cards and connectors */}
@@ -145,16 +143,6 @@ export default function OurApproachSection() {
         </div>
 
         {/* Footer copy */}
-        <motion.p
-          className='text-center text-gray-700 mt-12 max-w-3xl mx-auto'
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          We design with measurable impact in mind and deliver production-grade
-          systems that scale.
-        </motion.p>
       </div>
     </section>
   );

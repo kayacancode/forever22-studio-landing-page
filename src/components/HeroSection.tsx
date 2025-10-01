@@ -39,9 +39,11 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              We design and build modern software systems that streamline
-              operations, enhance decision-making, and unlock new revenue
-              opportunities for organizations of all sizes.
+              We aren’t just a product dev studio.
+              <br />
+              <br />
+              Forever 22 consults, finds the problem, builds the solution, and
+              then turns it into a revenue-generating SaaS.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -59,29 +61,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Work With Us
-                <svg
-                  className='ml-2 w-5 h-5'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M17 8l4 4m0 0l-4 4m4-4H3'
-                  />
-                </svg>
-              </motion.a>
-
-              <motion.a
-                href='#capabilities'
-                className='inline-flex items-center border-2 border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-200'
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Capabilities
+                Let's Chat
               </motion.a>
             </motion.div>
           </div>

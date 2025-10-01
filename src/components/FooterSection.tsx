@@ -55,20 +55,6 @@ export default function FooterSection() {
       {/* Curved Logo Section */}
       <div className='bg-gray-100 relative'>
         {/* Curved bottom border */}
-        <div className='absolute bottom-0 left-0 w-full overflow-hidden'>
-          <svg
-            className='relative block w-full h-20'
-            data-name='Layer 1'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 1200 120'
-            preserveAspectRatio='none'
-          >
-            <path
-              d='M0,0V60c0,0,200,40,600,40s600-40,600-40V0Z'
-              className='fill-orange-500'
-            ></path>
-          </svg>
-        </div>
 
         {/* Logo grid */}
         {/* <motion.div
@@ -106,14 +92,13 @@ export default function FooterSection() {
       <div className='bg-orange-500 relative'>
         <div className='max-w-7xl mx-auto px-6 lg:px-8 pt-8 pb-16'>
           {/* Navigation and CTA */}
-          <motion.div
+          {/* <motion.div
             className='flex flex-col md:flex-row justify-between items-start md:items-center mb-16'
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            {/* Navigation Links */}
             <motion.nav
               className='flex flex-col space-y-4 mb-8 md:mb-0'
               initial={{ opacity: 0, x: -30 }}
@@ -132,7 +117,7 @@ export default function FooterSection() {
                 </motion.div>
               ))}
             </motion.nav>
-          </motion.div>
+          </motion.div> */}
 
           {/* Large Company Name */}
           <motion.div
@@ -142,8 +127,8 @@ export default function FooterSection() {
             transition={{ duration: 1, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h2 className='text-6xl md:text-8xl lg:text-9xl font-bold text-slate-900 leading-none tracking-tight'>
-              Forever22
+            <h2 className='text-6xl text-center md:text-8xl lg:text-9xl font-bold text-slate-900 leading-none tracking-tight'>
+              Forever 22
               <motion.span
                 className='inline-block ml-4'
                 animate={{ rotate: [0, 360] }}
@@ -163,7 +148,7 @@ export default function FooterSection() {
             viewport={{ once: true }}
           >
             <div className='flex flex-wrap gap-6 mb-4 md:mb-0'>
-              {['Privacy Policy', 'Terms of Service', 'Careers'].map((item) => (
+              {['Privacy Policy', 'Terms of Service'].map((item) => (
                 <Link
                   key={item}
                   href={`#${item.toLowerCase().replace(' ', '-')}`}
@@ -190,10 +175,6 @@ export default function FooterSection() {
                 {
                   name: 'LinkedIn',
                   icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 2a2 2 0 11-4 0 2 2 0 014 0z',
-                },
-                {
-                  name: 'Instagram',
-                  icon: 'M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 3a7 7 0 107 7 7 7 0 00-7-7zm7.5-1.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z',
                 },
               ].map((social) => (
                 <motion.a
@@ -223,7 +204,7 @@ export default function FooterSection() {
             viewport={{ once: true }}
           >
             <p className='text-slate-900/60 text-sm'>
-              © {new Date().getFullYear()} Forever22 LLC. All rights reserved.
+              © {new Date().getFullYear()} Forever 22 LLC. All rights reserved.
             </p>
           </motion.div>
         </div>
