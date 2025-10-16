@@ -34,16 +34,17 @@ export default function HeroSection() {
 
             {/* Description */}
             <motion.p
-              className='text-base sm:text-lg text-black mb-12 max-w-3xl mx-auto leading-relaxed'
+              className='text-base sm:text-lg md:text-xl text-black mb-12 max-w-3xl mx-auto leading-relaxed font-medium'
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              We aren’t just a product dev studio.
+              We build products, brands, and automations that create lasting
+              impact.
               <br />
               <br />
-              Forever 22 consults, finds the problem, builds the solution, and
-              then turns it into a revenue-generating SaaS.
+              Design & development studio crafting solutions built to
+              last—forever.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -62,6 +63,14 @@ export default function HeroSection() {
                 whileTap={{ scale: 0.95 }}
               >
                 Let's Chat
+              </motion.a>
+              <motion.a
+                href='#projects'
+                className='inline-flex items-center bg-white hover:bg-gray-50 text-black px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 shadow-lg border-2 border-black'
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Our Work
               </motion.a>
             </motion.div>
           </div>

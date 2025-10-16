@@ -112,7 +112,7 @@ export default function AboutUsSection() {
               </motion.div>
             </motion.div>
 
-            {/* Right Column - LinkedIn Link */}
+            {/* Right Column - Video */}
             <motion.div
               className='relative'
               initial={{ opacity: 0, x: 30 }}
@@ -120,25 +120,18 @@ export default function AboutUsSection() {
               transition={{ duration: 0.6, delay: 0.7 }}
               viewport={{ once: true }}
             >
-              <div className='aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden flex items-center justify-center'>
-                <motion.a
-                  href='https://www.linkedin.com/in/kayarjones/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='text-center text-gray-700 hover:text-orange-500 transition-colors duration-300'
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+              <div className='relative rounded-2xl overflow-hidden shadow-xl bg-gray-100 aspect-video'>
+                <video
+                  className='w-full h-full object-cover'
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload='auto'
                 >
-                  <svg
-                    className='w-16 h-16 mx-auto mb-4 text-current'
-                    fill='currentColor'
-                    viewBox='0 0 24 24'
-                  >
-                    <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' />
-                  </svg>
-                  <p className='text-lg font-medium'>Connect with Kaya</p>
-                  <p className='text-sm opacity-75'>LinkedIn Profile</p>
-                </motion.a>
+                  <source src='/images/teamvid.mp4' type='video/mp4' />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </motion.div>
           </div>
