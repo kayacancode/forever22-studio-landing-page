@@ -1,24 +1,741 @@
 'use client';
 
+import { motion } from 'framer-motion';
+import {
+  BarChart3,
+  Check,
+  Search as SearchIcon,
+  Sparkles,
+  TrendingUp,
+  Workflow,
+} from 'lucide-react';
 import * as React from 'react';
 
-import AboutUsSection from '@/components/AboutUsSection';
-import FooterSection from '@/components/FooterSection';
-import HeroSection from '@/components/HeroSection';
-import FeaturedProjectsSection from '@/components/PastPerformanceSection';
-import TalentPoolSection from '@/components/TalentPoolSection';
-export default function HomePage() {
+import { Card } from '@/components/ui/card';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+
+// Declare Cal.com types
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Cal?: any;
+  }
+}
+
+// ================== HERO SECTION ==================
+function HeroSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
   return (
-    <main className='min-h-screen'>
-      {/* <Navigation /> */}
-      <HeroSection />
+    <section className='relative w-full overflow-hidden bg-[#fffcfa] py-24'>
+      <div className='relative mx-auto max-w-[1536px] px-12'>
+        {/* Content */}
+        <div className='flex flex-col items-center justify-center gap-24'>
+          <div className='flex w-full flex-col items-center justify-center gap-24'>
+            <h1 className='w-full text-center font-["Plus_Jakarta_Sans"] text-[120px] font-bold leading-[120px] tracking-[-2.4px] text-[#281f1b]'>
+              Scale Your Business with Artificial Intelligence
+            </h1>
+
+            {/* CTA Buttons */}
+            <div className='flex items-center justify-center gap-24'>
+              <motion.button
+                onClick={onBookCallClick}
+                className='cursor-pointer rounded-[16px] bg-[#ff5e00] px-7 py-3 font-["Plus_Jakarta_Sans"] text-[20px] font-medium leading-[24px] text-[#050200] transition-transform hover:scale-105'
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                book discovery call
+              </motion.button>
+              <motion.button
+                className='cursor-pointer rounded-[16px] bg-[#ff5e00] px-7 py-3 font-["Plus_Jakarta_Sans"] text-[20px] font-medium leading-[24px] text-[#050200] transition-transform hover:scale-105'
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                view case studies
+              </motion.button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ================== PROBLEM SECTION ==================
+function ProblemSection() {
+  return (
+    <section className='relative w-full bg-[#fffcfa] py-24'>
+      <div className='mx-auto flex max-w-[1536px] items-start gap-24 px-0 py-12'>
+        <p className='basis-0 grow font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+          AI is overwhelming. Too many tools. No clear path.
+        </p>
+        <div className='basis-0 grow'>
+          <p className='pt-2 font-["Plus_Jakarta_Sans"] text-[24px] font-normal leading-[32px] text-[#281f1b]'>
+            Forever 22 helps you adopt Artificial Intelligence efficiently, and
+            securely
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ================== AI JOURNEY BENTO GRID ==================
+function AIJourneySection() {
+  const journeyCards = [
+    {
+      title: 'Explore AI',
+      description: 'Discover AI opportunities',
+      icon: <SearchIcon className='h-8 w-8 text-[#a13b00]' />,
+    },
+    {
+      title: 'Blueprint AI',
+      description:
+        'Make a plan to scale AI across your business and processes.',
+      hasLargeUI: true,
+    },
+    {
+      title: 'Implement AI',
+      description:
+        'Automate your workflows completely. Build custom solutions to support your business.',
+      icon: <Workflow className='h-8 w-8 text-[#a13b00]' />,
+    },
+    {
+      title: 'Scale with AI',
+      description:
+        'create a micro SaaS that creates additional revenue for your business.',
+      hasLargeUI: true,
+    },
+  ];
+
+  return (
+    <section className='relative w-full bg-[#fffcfa] py-12'>
+      <div className='mx-auto flex max-w-[1536px] flex-col items-start gap-12 px-0 py-12'>
+        <p className='w-full text-center font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+          We help you adopt AI
+        </p>
+
+        {/* Bento Grid */}
+        <div className='grid w-full grid-cols-1 gap-7 md:grid-cols-2'>
+          {journeyCards.map((card, index) => (
+            <motion.div
+              key={index}
+              className='flex h-[480px] flex-col rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <div className='space-y-2'>
+                <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+                  {card.title}
+                </h3>
+                <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+                  {card.description}
+                </p>
+              </div>
+
+              {/* Icon/UI Preview */}
+              <div className='mt-auto flex items-center justify-center'>
+                {card.icon && (
+                  <div className='flex h-32 w-32 items-center justify-center rounded-[20px] bg-white shadow-sm'>
+                    {card.icon}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ================== TESTIMONIALS SECTION ==================
+function TestimonialsSection() {
+  const testimonials = [
+    {
+      quote:
+        "Forever 22 transformed our customer service workflow. We reduced response time by 80% and scaled our team's efficiency exponentially.",
+      author: 'Sarah Chen',
+      role: 'VP of Operations',
+      company: 'TechFlow Inc',
+    },
+    {
+      quote:
+        'The AI blueprint session helped us identify $2M in potential cost savings. Their implementation was seamless and ROI was immediate.',
+      author: 'Marcus Rodriguez',
+      role: 'Chief Technology Officer',
+      company: 'Nexus Systems',
+    },
+    {
+      quote:
+        'Working with Forever 22 gave us a competitive edge. The micro-SaaS they built became a new revenue stream generating $50K monthly.',
+      author: 'Priya Patel',
+      role: 'Founder & CEO',
+      company: 'DataBridge Solutions',
+    },
+    {
+      quote:
+        'Their automation strategy cut our manual processes by 90%. What used to take days now happens in minutes. Game-changing results.',
+      author: "James O'Connor",
+      role: 'Director of Operations',
+      company: 'Velocity Logistics',
+    },
+    {
+      quote:
+        "Forever 22 didn't just implement AI – they educated our team. Now we're independently scaling AI across all departments.",
+      author: 'Lisa Wang',
+      role: 'Head of Innovation',
+      company: 'FutureRetail Group',
+    },
+  ];
+
+  return (
+    <section className='relative w-full overflow-hidden bg-[#fffcfa] py-24'>
+      <div className='flex flex-col gap-12'>
+        <p className='mx-auto max-w-[1260px] text-center font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+          See what Forever 22 can do.
+        </p>
+
+        <div className='relative w-full overflow-hidden'>
+          <div className='scrollbar-hide flex gap-7 overflow-x-auto px-12 pb-4 snap-x snap-mandatory'>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className='w-[480px] flex-none snap-start'>
+                <div className='flex h-full min-h-[280px] flex-col justify-between rounded-[20px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-[rgba(126,70,37,0.09)] p-9'>
+                  <p className='mb-6 font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[32px] text-[#281f1b]'>
+                    "{testimonial.quote}"
+                  </p>
+                  <div>
+                    <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-bold leading-[24px] tracking-[-0.4px] text-[#281f1b]'>
+                      {testimonial.author}
+                    </p>
+                    <p className='font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] text-[#281f1b] opacity-70'>
+                      {testimonial.role}
+                    </p>
+                    <p className='font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] text-[#ff5e00]'>
+                      {testimonial.company}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ================== ABOUT US SECTION ==================
+function AboutUsSection() {
+  return (
+    <section className='relative w-full bg-[#fffcfa] px-12 py-24'>
+      <div className='mx-auto flex max-w-[1200px] flex-col items-center gap-16'>
+        <div className='flex max-w-[900px] flex-col items-center gap-4'>
+          <p className='text-center font-["Plus_Jakarta_Sans"] text-[14px] font-semibold uppercase tracking-[1.5px] text-[#ff5e00]'>
+            About us
+          </p>
+          <h2 className='text-center font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+            A true builder's company at heart.
+          </h2>
+          <p className='max-w-[700px] text-center font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[28px] text-[#281f1b] opacity-70'>
+            Forever 22 specializes in building intelligent automation solutions
+            that transform how businesses operate. Based in Chicago, our team
+            creates custom AI agents, workflow automations, and
+            revenue-generating SaaS products.
+          </p>
+        </div>
+
+        {/* Two Column Layout */}
+        <div className='grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 lg:grid-cols-2'>
+          {/* Left - Our Core */}
+          <div className='rounded-[24px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-white p-12'>
+            <h3 className='mb-6 font-["Plus_Jakarta_Sans"] text-[34px] font-bold leading-[40px] tracking-[-0.68px] text-[#281f1b]'>
+              Our Core
+            </h3>
+            <div className='flex flex-col gap-5'>
+              <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[26px] text-[#281f1b] opacity-70'>
+                Forever 22 is founded by Kaya Jones, a Chicago-based
+                entrepreneur with a vision to democratize AI automation for
+                businesses of all sizes. Our team operates from the heart of
+                Chicago, IL, bringing together talented individuals passionate
+                about artificial intelligence and business growth.
+              </p>
+              <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[26px] text-[#281f1b] opacity-70'>
+                We put results first, create scalable solutions through custom
+                development, and drive business growth by identifying and
+                automating friction points. Our methodology is simple but
+                powerful: understand, build, automate, scale.
+              </p>
+            </div>
+          </div>
+
+          {/* Right - Video */}
+          <div className='relative aspect-video overflow-hidden rounded-[24px] bg-gray-100 shadow-lg'>
+            <video
+              className='h-full w-full object-cover'
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload='auto'
+            >
+              <source src='/images/teamvid.mp4' type='video/mp4' />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ================== CASE STUDIES SECTION ==================
+function CaseStudiesSection() {
+  const caseStudies = [
+    {
+      title: 'AI Elearning SaaS',
+      company: 'Thryve AI',
+      metric: 'New revenue stream created',
+      description:
+        'Created a SaaS platform that combines AI-driven learning with personal branding tools for athletes and artists.',
+      tags: ['SaaS Platform', 'AI Learning', 'Personal Branding'],
+    },
+    {
+      title: 'Custom Agent Development',
+      company: 'Youdle',
+      metric: 'Additional revenue stream via public API',
+      description:
+        'Created an AI agent that performs global search for grocery items and stores, integrated directly into their web app.',
+      tags: ['AI Agent', 'API Development', 'Web Integration'],
+    },
+    {
+      title: 'Content Generation',
+      company: 'Insuave We Trust',
+      metric: 'Ready-to-post content automation',
+      description:
+        'Pulled Spotify playlists and created ready-to-post content for his music media company on Instagram.',
+      tags: ['Content Automation', 'Spotify API', 'Social Media'],
+    },
+  ];
+
+  return (
+    <section className='relative w-full bg-[#fffcfa] px-0 py-24'>
+      <div className='flex flex-col gap-12'>
+        <p className='w-full text-center font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+          Selected Case Studies
+        </p>
+
+        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-7 px-12 md:grid-cols-3'>
+          {caseStudies.map((study, index) => (
+            <Card
+              key={index}
+              className='rounded-[20px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-white p-9 transition-shadow hover:shadow-lg'
+            >
+              <div className='flex flex-col gap-6'>
+                <div>
+                  <div className='mb-4 h-1 w-12 rounded-full bg-[#ff5e00]' />
+                  <p className='mb-2 font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+                    {study.title}
+                  </p>
+                  <p className='font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] text-[#ff5e00]'>
+                    {study.company}
+                  </p>
+                </div>
+
+                <div className='rounded-[16px] bg-[rgba(126,70,37,0.09)] p-5'>
+                  <p className='font-["Plus_Jakarta_Sans"] text-[24px] font-bold leading-[28px] tracking-[-0.48px] text-[#281f1b]'>
+                    {study.metric}
+                  </p>
+                </div>
+
+                <p className='font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] text-[#281f1b]'>
+                  {study.description}
+                </p>
+
+                <div className='flex flex-wrap gap-2'>
+                  {study.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className='rounded-[8px] bg-[rgba(126,70,37,0.09)] px-3 py-1.5 font-["Plus_Jakarta_Sans"] text-[14px] font-normal text-[#281f1b]'
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ================== SERVICES SECTION ==================
+function ServicesSection() {
+  const features = [
+    {
+      title: 'Automate Repetitive Tasks',
+      description:
+        'We help you streamline internal operations by automating manual workflows',
+      icon: <Check className='h-12 w-12 text-[#ff5e00]' />,
+    },
+    {
+      title: 'Automated Workflows',
+      description:
+        'Boost efficiency across teams with smart automation. Build intelligent workflows.',
+      icon: <Workflow className='h-12 w-12 text-[#ff5e00]' />,
+      gridClass: 'md:col-span-2',
+    },
+    {
+      title: 'Custom AI Agent Development',
+      description:
+        'We develop custom AI agents that integrate seamlessly with your tools.',
+      icon: <Sparkles className='h-12 w-12 text-[#ff5e00]' />,
+    },
+    {
+      title: 'Real-Time Intelligence',
+      description:
+        'Make smarter decisions with live data insights. Tap into real-time data.',
+      icon: <TrendingUp className='h-12 w-12 text-[#ff5e00]' />,
+    },
+    {
+      title: 'AI Strategy Consulting',
+      description:
+        'Get expert guidance to implement AI solutions that drive business growth.',
+      icon: <BarChart3 className='h-12 w-12 text-[#ff5e00]' />,
+    },
+  ];
+
+  return (
+    <section className='relative w-full bg-[#fffcfa] px-0 py-24'>
+      <div className='flex flex-col gap-12'>
+        <div className='w-full text-center'>
+          <p className='mb-4 font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+            Smarter Services{' '}
+            <span className='italic text-[#a13b00]'>Built with AI</span>
+          </p>
+          <p className='mx-auto max-w-[800px] font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[32px] text-[#281f1b] opacity-70'>
+            Everything you need to automate operations, boost productivity.
+          </p>
+        </div>
+
+        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-6 px-12 md:grid-cols-3'>
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              className={`rounded-[24px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-[rgba(126,70,37,0.04)] p-8 transition-all hover:border-[#ff5e00] hover:shadow-[0_8px_24px_rgba(255,94,0,0.12)] ${
+                feature.gridClass || ''
+              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+            >
+              <div className='mb-6 flex h-24 items-center justify-center'>
+                {feature.icon}
+              </div>
+              <p className='mb-3 font-["Plus_Jakarta_Sans"] text-[22px] font-bold leading-[28px] tracking-[-0.44px] text-[#281f1b]'>
+                {feature.title}
+              </p>
+              <p className='font-["Plus_Jakarta_Sans"] text-[15px] font-normal leading-[24px] text-[#281f1b] opacity-70'>
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ================== MARATHON/SPRINT SECTION ==================
+function MarathonSprintSection() {
+  return (
+    <motion.section
+      className='relative flex w-full flex-col items-center gap-16 bg-[#fffcfa] px-12 py-32'
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className='flex w-full max-w-[1000px] flex-col items-center gap-12'>
+        <div className='text-center'>
+          <h2 className='mb-6 font-["Plus_Jakarta_Sans"] text-[80px] font-bold leading-[1.1] tracking-[-2px]'>
+            <span className='text-[#d4c5b9] opacity-40'>It's a </span>
+            <span className='text-[#281f1b]'>Marathon.</span>
+            <br />
+            <span className='text-[#d4c5b9] opacity-40'>Or a </span>
+            <span className='text-[#281f1b]'>Sprint.</span>
+          </h2>
+        </div>
+
+        <p className='max-w-[800px] text-center font-["Plus_Jakarta_Sans"] text-[22px] font-normal leading-[36px] text-[#281f1b] opacity-70'>
+          Great products aren't simply built on an assembly line. Some demand
+          continuous refinement, while others require focused precision — that's
+          why we have multiple ways to work with us.
+        </p>
+      </div>
+    </motion.section>
+  );
+}
+
+// ================== PRICING SECTION ==================
+function PricingSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
+  const plans = [
+    {
+      name: 'Explore AI',
+      price: '$2,500',
+      period: 'one-time',
+      description: 'Perfect for businesses starting their AI journey',
+      features: [
+        'AI Opportunity Assessment',
+        'Workflow Analysis Report',
+        'ROI Projection',
+        '90-minute Strategy Session',
+        'Implementation Roadmap',
+      ],
+      highlighted: false,
+    },
+    {
+      name: 'Blueprint AI',
+      price: '$8,500',
+      period: '/month',
+      description: 'Complete AI strategy and planning for your business',
+      features: [
+        'Everything in Explore AI',
+        'Custom AI Blueprint',
+        'Process Documentation',
+        '3-Month Implementation Plan',
+        'Team Training Workshop',
+      ],
+      highlighted: true,
+    },
+    {
+      name: 'Implement & Scale',
+      price: 'Custom',
+      period: '',
+      description: 'Full implementation and ongoing AI operations',
+      features: [
+        'Everything in Blueprint AI',
+        'Custom AI Development',
+        'Full System Integration',
+        'Micro-SaaS Development',
+        'Dedicated Support Team',
+      ],
+      highlighted: false,
+    },
+  ];
+
+  return (
+    <section className='relative w-full bg-[#fffcfa] px-0 py-24'>
+      <div className='flex flex-col gap-12'>
+        <div className='w-full text-center'>
+          <p className='mb-4 font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+            Transparent Pricing
+          </p>
+          <p className='mx-auto max-w-[800px] font-["Plus_Jakarta_Sans"] text-[24px] font-normal leading-[32px] text-[#281f1b]'>
+            Choose the plan that fits your automation needs
+          </p>
+        </div>
+
+        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-7 px-12 md:grid-cols-3'>
+          {plans.map((plan, index) => (
+            <div
+              key={index}
+              className={`relative rounded-[20px] border-[2px] p-9 transition-all hover:shadow-xl ${
+                plan.highlighted
+                  ? 'border-[#ff5e00] bg-[#ff5e00]'
+                  : 'border-[rgba(110,87,73,0.2)] bg-white hover:border-[#ff5e00]'
+              }`}
+            >
+              {plan.highlighted && (
+                <div className='absolute left-1/2 top-[-16px] -translate-x-1/2 transform rounded-full bg-[#281f1b] px-4 py-1 font-["Plus_Jakarta_Sans"] text-[14px] font-bold text-white'>
+                  MOST POPULAR
+                </div>
+              )}
+
+              <div className='flex flex-col gap-6'>
+                <div>
+                  <p
+                    className={`mb-2 font-["Plus_Jakarta_Sans"] text-[24px] font-bold leading-[32px] tracking-[-0.48px] ${
+                      plan.highlighted ? 'text-white' : 'text-[#281f1b]'
+                    }`}
+                  >
+                    {plan.name}
+                  </p>
+                  {plan.highlighted && (
+                    <p className='mb-1 font-["Plus_Jakarta_Sans"] text-[14px] font-normal text-white opacity-70'>
+                      Starting at
+                    </p>
+                  )}
+                  <div className='mb-3 flex items-baseline gap-2'>
+                    <p
+                      className={`font-["Plus_Jakarta_Sans"] text-[48px] font-bold tracking-[-0.96px] ${
+                        plan.highlighted ? 'text-white' : 'text-[#281f1b]'
+                      }`}
+                    >
+                      {plan.price}
+                    </p>
+                    <p
+                      className={`font-["Plus_Jakarta_Sans"] text-[17px] font-normal ${
+                        plan.highlighted
+                          ? 'text-white opacity-80'
+                          : 'text-[#281f1b] opacity-70'
+                      }`}
+                    >
+                      {plan.period}
+                    </p>
+                  </div>
+                  <p
+                    className={`font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] ${
+                      plan.highlighted
+                        ? 'text-white opacity-90'
+                        : 'text-[#281f1b] opacity-70'
+                    }`}
+                  >
+                    {plan.description}
+                  </p>
+                </div>
+
+                <div
+                  className={`h-[1px] ${
+                    plan.highlighted
+                      ? 'bg-white opacity-30'
+                      : 'bg-[#281f1b] opacity-20'
+                  }`}
+                />
+
+                <div className='flex flex-col gap-4'>
+                  {plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className='flex items-start gap-3'>
+                      <Check
+                        className={`mt-[2px] h-5 w-5 flex-shrink-0 ${
+                          plan.highlighted ? 'text-white' : 'text-[#ff5e00]'
+                        }`}
+                      />
+                      <p
+                        className={`font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] ${
+                          plan.highlighted ? 'text-white' : 'text-[#281f1b]'
+                        }`}
+                      >
+                        {feature}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={onBookCallClick}
+                  className={`mt-4 rounded-[16px] px-7 py-3 font-["Plus_Jakarta_Sans"] text-[20px] font-medium transition-all ${
+                    plan.highlighted
+                      ? 'bg-white text-[#ff5e00] hover:bg-[#281f1b] hover:text-white'
+                      : 'bg-[#ff5e00] text-[#050200] hover:bg-[#281f1b] hover:text-white'
+                  }`}
+                >
+                  Book Call
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ================== FOOTER SECTION ==================
+function FooterSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
+  return (
+    <footer className='relative flex w-full flex-col items-center justify-center gap-12 bg-[#fffcfa] px-0 py-24'>
+      <p className='max-w-[720px] text-center font-["Plus_Jakarta_Sans"] text-[34px] font-bold leading-[40px] tracking-[-0.68px] text-[#281f1b]'>
+        Don't get left behind.
+      </p>
+      <button
+        onClick={onBookCallClick}
+        className='cursor-pointer rounded-[16px] bg-[#ff5e00] px-8 py-4 font-["Plus_Jakarta_Sans"] text-[20px] font-medium leading-[24px] text-[#050200] transition-transform hover:scale-105'
+      >
+        Book Call
+      </button>
+      <div className='mt-6 w-full max-w-[1080px] border-t border-[rgba(110,87,73,0.2)] pt-6'>
+        <p className='text-center font-["Plus_Jakarta_Sans"] text-[14px] font-normal text-[#281f1b] opacity-60'>
+          © 2025 Forever 22 LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+// ================== MAIN APP ==================
+export default function HomePage() {
+  const [isBookingModalOpen, setIsBookingModalOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isBookingModalOpen) {
+      const script = document.createElement('script');
+      script.src = 'https://app.cal.com/embed/embed.js';
+      script.async = true;
+      document.head.appendChild(script);
+
+      script.onload = () => {
+        if (window.Cal) {
+          window.Cal('init', 'intro-with-forever-22-studios', {
+            origin: 'https://app.cal.com',
+          });
+          window.Cal.ns['intro-with-forever-22-studios']('inline', {
+            elementOrSelector: '#my-cal-inline-intro-with-forever-22-studios',
+            config: { layout: 'month_view' },
+            calLink: 'forever22studio/intro-with-forever-22-studios',
+          });
+          window.Cal.ns['intro-with-forever-22-studios']('ui', {
+            hideEventTypeDetails: false,
+            layout: 'month_view',
+          });
+        }
+      };
+
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, [isBookingModalOpen]);
+
+  const handleBookCallClick = () => {
+    setIsBookingModalOpen(true);
+  };
+
+  return (
+    <main className='min-h-screen w-full overflow-x-hidden bg-[#fffcfa]'>
+      <HeroSection onBookCallClick={handleBookCallClick} />
+      <ProblemSection />
+      <AIJourneySection />
+      <TestimonialsSection />
       <AboutUsSection />
-      {/* <OurApproachSection /> */}
-      {/* <CoreCapabilitiesSection /> */}
-      {/* <WhyForever22Section /> */}
-      <FeaturedProjectsSection />
-      <TalentPoolSection />
-      <FooterSection />
+      <CaseStudiesSection />
+      <ServicesSection />
+      <MarathonSprintSection />
+      <PricingSection onBookCallClick={handleBookCallClick} />
+      <FooterSection onBookCallClick={handleBookCallClick} />
+
+      <Dialog open={isBookingModalOpen} onOpenChange={setIsBookingModalOpen}>
+        <DialogContent className='max-h-[90vh] max-w-[900px] border-2 border-[#ff5e00] bg-[#fffcfa]'>
+          <DialogHeader>
+            <DialogTitle className='font-["Plus_Jakarta_Sans"] text-[24px] text-[#281f1b]'>
+              Book a Discovery Call
+            </DialogTitle>
+          </DialogHeader>
+          <div
+            id='my-cal-inline-intro-with-forever-22-studios'
+            className='scrollbar-hide h-[600px] w-full overflow-scroll'
+          />
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }
