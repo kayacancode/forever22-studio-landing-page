@@ -1,5 +1,6 @@
 'use client';
 
+import Cal, { getCalApi } from '@calcom/embed-react';
 import { motion } from 'framer-motion';
 import {
   BarChart3,
@@ -18,14 +19,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-
-// Declare Cal.com types
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Cal?: any;
-  }
-}
 
 // ================== HERO SECTION ==================
 function HeroSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
@@ -68,7 +61,7 @@ function HeroSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
 function ProblemSection() {
   return (
     <section className='relative w-full bg-[#fffcfa] py-24'>
-      <div className='mx-auto flex max-w-[1536px] items-start gap-24 px-0 py-12'>
+      <div className='mx-auto flex max-w-[1536px] items-start gap-24 px-12 py-12'>
         <p className='basis-0 grow font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
           AI is overwhelming. Too many tools. No clear path.
         </p>
@@ -85,32 +78,6 @@ function ProblemSection() {
 
 // ================== AI JOURNEY BENTO GRID ==================
 function AIJourneySection() {
-  const journeyCards = [
-    {
-      title: 'Explore AI',
-      description: 'Discover AI opportunities',
-      icon: <SearchIcon className='h-8 w-8 text-[#a13b00]' />,
-    },
-    {
-      title: 'Blueprint AI',
-      description:
-        'Make a plan to scale AI across your business and processes.',
-      hasLargeUI: true,
-    },
-    {
-      title: 'Implement AI',
-      description:
-        'Automate your workflows completely. Build custom solutions to support your business.',
-      icon: <Workflow className='h-8 w-8 text-[#a13b00]' />,
-    },
-    {
-      title: 'Scale with AI',
-      description:
-        'create a micro SaaS that creates additional revenue for your business.',
-      hasLargeUI: true,
-    },
-  ];
-
   return (
     <section className='relative w-full bg-[#fffcfa] py-12'>
       <div className='mx-auto flex max-w-[1536px] flex-col items-start gap-12 px-0 py-12'>
@@ -120,34 +87,157 @@ function AIJourneySection() {
 
         {/* Bento Grid */}
         <div className='grid w-full grid-cols-1 gap-7 md:grid-cols-2'>
-          {journeyCards.map((card, index) => (
-            <motion.div
-              key={index}
-              className='flex h-[480px] flex-col rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <div className='space-y-2'>
-                <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
-                  {card.title}
-                </h3>
-                <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
-                  {card.description}
+          {/* Card 1: Explore AI */}
+          <motion.div
+            className='flex h-[480px] flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className='space-y-2'>
+              <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+                Explore AI
+              </h3>
+              <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+                Discover AI opportunities
+              </p>
+            </div>
+
+            {/* UI Mockup */}
+            <div className='relative mt-auto h-[300px] w-full'>
+              {/* Phone mockup */}
+              <div className='absolute left-1/2 top-8 h-[260px] w-[200px] -translate-x-1/2 overflow-hidden rounded-[20px] bg-white shadow-lg'>
+                <div className='h-8 w-28 rounded-[16px] bg-[rgba(40,31,27,0.2)] m-7' />
+                <div className='absolute inset-x-7 bottom-7 top-20 rounded-[16px] bg-[rgba(40,31,27,0.2)] opacity-50' />
+              </div>
+
+              {/* AI Insights card */}
+              <div className='absolute left-[15%] top-[180px] flex h-[72px] w-[155px] items-center gap-3 rounded-[20px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-white px-5 shadow-lg'>
+                <SearchIcon className='h-8 w-8 text-[#a13b00]' />
+                <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-bold tracking-[-0.4px] text-[#281f1b]'>
+                  AI Insights
                 </p>
               </div>
 
-              {/* Icon/UI Preview */}
-              <div className='mt-auto flex items-center justify-center'>
-                {card.icon && (
-                  <div className='flex h-32 w-32 items-center justify-center rounded-[20px] bg-white shadow-sm'>
-                    {card.icon}
-                  </div>
-                )}
+              {/* Data Analysis card */}
+              <div className='absolute right-[10%] top-[80px] flex h-[72px] w-[155px] items-center gap-3 rounded-[20px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-white px-5 shadow-lg'>
+                <BarChart3 className='h-8 w-8 text-[#a13b00]' />
+                <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-bold tracking-[-0.4px] text-[#281f1b]'>
+                  Data Analysis
+                </p>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
+
+          {/* Card 2: Blueprint AI */}
+          <motion.div
+            className='flex h-[480px] flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <div className='space-y-2'>
+              <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+                Blueprint AI
+              </h3>
+              <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+                Make a plan to scale AI across your business and processes.
+              </p>
+            </div>
+
+            {/* UI Mockup */}
+            <div className='relative mt-auto flex h-[300px] w-full items-center justify-end'>
+              {/* Blueprint card */}
+              <div className='absolute -bottom-20 -right-10 h-[330px] w-[390px] overflow-hidden rounded-[24px] bg-white shadow-xl'>
+                {/* Header */}
+                <div className='flex items-center gap-4 p-10'>
+                  <div className='h-16 w-16 rounded-full bg-gray-300' />
+                  <p className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold tracking-[-0.68px] text-[#281f1b]'>
+                    Blueprint Creation
+                  </p>
+                </div>
+
+                {/* Content blocks */}
+                <div className='space-y-5 px-10'>
+                  <div className='h-12 w-full rounded-[16px] bg-[#ff5e00] opacity-30' />
+                  <div className='h-12 w-5/6 rounded-[16px] bg-[rgba(40,31,27,0.2)] opacity-50' />
+                  <div className='h-12 w-11/12 rounded-[16px] bg-[rgba(40,31,27,0.2)] opacity-50' />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 3: Implement AI */}
+          <motion.div
+            className='flex h-[480px] flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className='space-y-2'>
+              <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+                Implement AI
+              </h3>
+              <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+                Automate your workflows completely. Build custom solutions to
+                support your business.
+              </p>
+            </div>
+
+            {/* UI Mockup */}
+            <div className='relative mt-auto flex h-[300px] w-full items-center justify-center'>
+              {/* Integration card */}
+              <div className='h-[280px] w-[240px] overflow-hidden rounded-[20px] bg-white p-7 shadow-lg'>
+                <h3 className='mb-5 font-["Plus_Jakarta_Sans"] text-[24px] font-bold tracking-[-0.48px] text-[#281f1b]'>
+                  Integration
+                </h3>
+                <div className='space-y-5'>
+                  <div className='h-20 w-full rounded-[16px] bg-[rgba(40,31,27,0.2)] opacity-50' />
+                  <div className='h-20 w-full rounded-[16px] bg-[rgba(40,31,27,0.2)] opacity-50' />
+                  <div className='h-12 w-16 rounded-[16px] bg-[#ff5e00]' />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 4: Scale with AI */}
+          <motion.div
+            className='flex h-[480px] flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <div className='space-y-2'>
+              <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+                Scale with AI
+              </h3>
+              <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+                create a micro SaaS that creates additional revenue for your
+                business.
+              </p>
+            </div>
+
+            {/* UI Mockup */}
+            <div className='relative mt-auto flex h-[300px] w-full items-center justify-start'>
+              {/* Scaling card */}
+              <div className='absolute -bottom-20 -left-10 h-[330px] w-[390px] overflow-hidden rounded-[24px] bg-white shadow-xl'>
+                {/* Header with buttons */}
+                <div className='flex items-center justify-end gap-6 p-10'>
+                  <div className='h-8 w-28 rounded-[16px] bg-[rgba(40,31,27,0.2)] opacity-50' />
+                  <div className='h-8 w-20 rounded-[16px] bg-[rgba(40,31,27,0.2)] opacity-50' />
+                  <div className='rounded-[16px] bg-[#ff5e00] px-4 py-2 font-["Plus_Jakarta_Sans"] text-[16px] font-bold text-[#050200]'>
+                    Scaling
+                  </div>
+                </div>
+
+                {/* Content background */}
+                <div className='mx-0 mr-10 h-[240px] rounded-[16px] bg-[rgba(40,31,27,0.2)] opacity-30' />
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -159,38 +249,31 @@ function TestimonialsSection() {
   const testimonials = [
     {
       quote:
-        "Forever 22 transformed our customer service workflow. We reduced response time by 80% and scaled our team's efficiency exponentially.",
-      author: 'Sarah Chen',
-      role: 'VP of Operations',
-      company: 'TechFlow Inc',
+        'Forever 22 built Thryve AI from the ground up – a complete AI-powered eLearning platform with personal branding tools. They understood our vision for empowering athletes and artists, and delivered beyond expectations. The platform is already transforming how our users build their brands.',
+      author: 'Thryve AI Team',
+      role: 'Founders',
+      company: 'Thryve AI',
     },
     {
       quote:
-        'The AI blueprint session helped us identify $2M in potential cost savings. Their implementation was seamless and ROI was immediate.',
-      author: 'Marcus Rodriguez',
-      role: 'Chief Technology Officer',
-      company: 'Nexus Systems',
+        'We needed a custom AI agent that could search grocery items globally and integrate with our web app. Forever 22 delivered exactly that, plus they built a public API that created an entirely new revenue stream for us. Their technical expertise is unmatched.',
+      author: 'Youdle Team',
+      role: 'Product Lead',
+      company: 'Youdle',
     },
     {
       quote:
-        'Working with Forever 22 gave us a competitive edge. The micro-SaaS they built became a new revenue stream generating $50K monthly.',
-      author: 'Priya Patel',
-      role: 'Founder & CEO',
-      company: 'DataBridge Solutions',
+        "Forever 22 automated our entire content creation process by pulling Spotify playlists and generating ready-to-post Instagram content for our music media company. What used to take hours now happens automatically. They've saved us countless hours while keeping our content fresh and engaging.",
+      author: 'InSuave We Trust',
+      role: 'Founder',
+      company: 'Insuave We Trust',
     },
     {
       quote:
-        'Their automation strategy cut our manual processes by 90%. What used to take days now happens in minutes. Game-changing results.',
-      author: "James O'Connor",
-      role: 'Director of Operations',
-      company: 'Velocity Logistics',
-    },
-    {
-      quote:
-        "Forever 22 didn't just implement AI – they educated our team. Now we're independently scaling AI across all departments.",
-      author: 'Lisa Wang',
-      role: 'Head of Innovation',
-      company: 'FutureRetail Group',
+        "Working with Forever 22 was seamless. They took time to understand our workflow, identified automation opportunities we didn't even know existed, and implemented solutions that scaled with our business. True partners in growth.",
+      author: 'DJKarefree',
+      role: 'DJ & Entrepreneur',
+      company: 'DJKarefree',
     },
   ];
 
@@ -298,6 +381,17 @@ function AboutUsSection() {
 function CaseStudiesSection() {
   const caseStudies = [
     {
+      title: 'VC Deal Flow Automation',
+      company: 'Betaworks',
+      metric: 'Transforming investment evaluation',
+      description:
+        'Building a sophisticated mobile AI assistant for deal flow management that streamlines how Betaworks evaluates investment opportunities.',
+      testimonial:
+        'Kaya is a very pleasant, easy person to work with—smart, dependable, and full of hustle. I like working with her and appreciate how she consistently figures things out and keeps momentum.',
+      author: 'John Borthwick, Founder & CEO',
+      tags: ['Mobile AI Assistant', 'VC Workflow', 'Deal Flow'],
+    },
+    {
       title: 'AI Elearning SaaS',
       company: 'Thryve AI',
       metric: 'New revenue stream created',
@@ -357,6 +451,17 @@ function CaseStudiesSection() {
                   {study.description}
                 </p>
 
+                {study.testimonial && (
+                  <div className='rounded-[16px] border-l-4 border-[#ff5e00] bg-[rgba(126,70,37,0.04)] p-5'>
+                    <p className='mb-3 font-["Plus_Jakarta_Sans"] text-[15px] italic leading-[22px] text-[#281f1b]'>
+                      "{study.testimonial}"
+                    </p>
+                    <p className='font-["Plus_Jakarta_Sans"] text-[14px] font-semibold text-[#a13b00]'>
+                      — {study.author}
+                    </p>
+                  </div>
+                )}
+
                 <div className='flex flex-wrap gap-2'>
                   {study.tags.map((tag, tagIndex) => (
                     <span
@@ -378,37 +483,250 @@ function CaseStudiesSection() {
 
 // ================== SERVICES SECTION ==================
 function ServicesSection() {
+  // Task List Mockup Component
+  const TaskListMockup = () => (
+    <div className='space-y-3'>
+      <motion.div
+        className='flex items-center gap-3 rounded-lg border border-[rgba(110,87,73,0.2)] bg-white p-3 shadow-sm'
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+      >
+        <Check className='h-4 w-4 text-green-600' />
+        <span className='text-sm text-[#281f1b]'>Social media post</span>
+        <Check className='ml-auto h-4 w-4 text-[#a13b00]' />
+      </motion.div>
+      <motion.div
+        className='flex items-center gap-3 rounded-lg border border-[#ff5e00] bg-[#ff5e00] p-3 shadow-md'
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+      >
+        <Workflow className='h-4 w-4 text-white' />
+        <span className='text-sm text-white'>Employee Tracking</span>
+        <Workflow className='ml-auto h-4 w-4 text-white' />
+      </motion.div>
+      <motion.div
+        className='flex items-center gap-3 rounded-lg border border-[rgba(110,87,73,0.2)] bg-white p-3 opacity-60 shadow-sm'
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4 }}
+      >
+        <Check className='h-4 w-4 text-[#a13b00] opacity-50' />
+        <span className='text-sm text-[#281f1b] opacity-70'>
+          Payment reminder
+        </span>
+        <Check className='ml-auto h-4 w-4 text-[#a13b00] opacity-50' />
+      </motion.div>
+    </div>
+  );
+
+  // Workflow Icons Mockup
+  const WorkflowIconsMockup = () => {
+    const icons = [
+      { Icon: Sparkles, angle: 0 },
+      { Icon: BarChart3, angle: 72 },
+      { Icon: TrendingUp, angle: 144 },
+      { Icon: SearchIcon, angle: 216 },
+      { Icon: Workflow, angle: 288 },
+    ];
+
+    return (
+      <div className='relative flex h-40 items-center justify-center'>
+        <motion.div
+          className='absolute flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#ff5e00] to-[#ff8c00] shadow-lg'
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+        >
+          <Sparkles className='h-8 w-8 text-white' />
+        </motion.div>
+
+        {icons.map(({ Icon, angle }, idx) => {
+          const rad = (angle * Math.PI) / 180;
+          const x = Math.cos(rad) * 70;
+          const y = Math.sin(rad) * 70;
+
+          return (
+            <motion.div
+              key={idx}
+              className='absolute flex h-10 w-10 items-center justify-center rounded-lg border border-[rgba(110,87,73,0.2)] bg-white shadow-md'
+              style={{
+                left: `calc(50% + ${x}px)`,
+                top: `calc(50% + ${y}px)`,
+                transform: 'translate(-50%, -50%)',
+              }}
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, type: 'spring' }}
+            >
+              <Icon className='h-5 w-5 text-[#281f1b]' />
+            </motion.div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Code Mockup
+  const CodeMockup = () => (
+    <div className='rounded-lg border border-[rgba(110,87,73,0.2)] bg-[#281f1b] p-4 font-mono text-xs shadow-lg'>
+      <div className='mb-3 flex gap-2'>
+        <div className='h-3 w-3 rounded-full bg-red-500'></div>
+        <div className='h-3 w-3 rounded-full bg-yellow-500'></div>
+        <div className='h-3 w-3 rounded-full bg-green-500'></div>
+      </div>
+      <div className='space-y-1 text-[#a8a29e]'>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
+          <span className='text-[#ff8c00]'>def</span>{' '}
+          <span className='text-[#ffa500]'>__init__</span>(self,
+          activation_limit):
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className='pl-6'
+        >
+          self.activation_limit =
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className='pl-6'
+        >
+          activation_limit
+        </motion.div>
+      </div>
+    </div>
+  );
+
+  // Search Mockup
+  const SearchMockup = () => (
+    <div className='space-y-3'>
+      <div className='flex items-center gap-3 rounded-lg border border-[rgba(110,87,73,0.2)] bg-white p-3 shadow-sm'>
+        <SearchIcon className='h-4 w-4 text-[#a13b00]' />
+        <span className='text-sm text-[#281f1b] opacity-60'>
+          Research anything...
+        </span>
+        <span className='ml-auto rounded bg-[rgba(126,70,37,0.09)] px-2 py-1 text-xs text-[#a13b00]'>
+          Research
+        </span>
+      </div>
+      {[
+        { text: 'Software & app industry' },
+        { text: 'UX&UI design industry' },
+        { text: 'High Converting customer' },
+      ].map((item, idx) => (
+        <motion.div
+          key={idx}
+          className='flex items-center gap-3 rounded-lg border border-[rgba(110,87,73,0.2)] bg-white p-3 shadow-sm'
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 + idx * 0.1 }}
+        >
+          <TrendingUp className='h-4 w-4 text-[#a13b00]' />
+          <span className='text-sm text-[#281f1b]'>{item.text}</span>
+          <TrendingUp className='ml-auto h-4 w-4 text-[#a13b00]' />
+        </motion.div>
+      ))}
+    </div>
+  );
+
+  // Strategy Mockup
+  const StrategyMockup = () => (
+    <div className='relative flex h-40 items-center justify-center'>
+      <motion.div
+        className='absolute'
+        animate={{ rotate: [0, 10, -10, 0] }}
+        transition={{ duration: 4, repeat: Infinity }}
+      >
+        <Sparkles className='h-16 w-16 text-[#ff5e00]' />
+      </motion.div>
+
+      {[...Array(3)].map((_, idx) => (
+        <motion.div
+          key={idx}
+          className='absolute'
+          style={{
+            left: `${30 + idx * 20}%`,
+            top: `${20 + idx * 25}%`,
+          }}
+          animate={{
+            y: [0, -10, 0],
+            opacity: [0.3, 1, 0.3],
+          }}
+          transition={{
+            duration: 2,
+            delay: idx * 0.3,
+            repeat: Infinity,
+          }}
+        >
+          <Sparkles className='h-8 w-8 text-[#ff8c00] opacity-60' />
+        </motion.div>
+      ))}
+
+      <motion.div
+        className='absolute bottom-0 right-0'
+        animate={{ rotate: [0, -15, 15, 0] }}
+        transition={{ duration: 5, repeat: Infinity }}
+      >
+        <BarChart3 className='h-12 w-12 text-[#a13b00] opacity-40' />
+      </motion.div>
+    </div>
+  );
+
   const features = [
     {
       title: 'Automate Repetitive Tasks',
       description:
         'We help you streamline internal operations by automating manual workflows',
-      icon: <Check className='h-12 w-12 text-[#ff5e00]' />,
+      Mockup: TaskListMockup,
+      gridClass: 'md:col-span-1',
     },
     {
       title: 'Automated Workflows',
       description:
-        'Boost efficiency across teams with smart automation. Build intelligent workflows.',
-      icon: <Workflow className='h-12 w-12 text-[#ff5e00]' />,
+        'Boost efficiency across teams with smart automation. Build intelligent workflows that automate multi-step processes across tools and platforms.',
+      Mockup: WorkflowIconsMockup,
       gridClass: 'md:col-span-2',
     },
     {
       title: 'Custom AI Agent Development',
       description:
         'We develop custom AI agents that integrate seamlessly with your tools.',
-      icon: <Sparkles className='h-12 w-12 text-[#ff5e00]' />,
+      Mockup: CodeMockup,
+      gridClass: 'md:col-span-1',
     },
     {
       title: 'Real-Time Intelligence',
       description:
         'Make smarter decisions with live data insights. Tap into real-time data.',
-      icon: <TrendingUp className='h-12 w-12 text-[#ff5e00]' />,
+      Mockup: SearchMockup,
+      gridClass: 'md:col-span-1',
     },
     {
       title: 'AI Strategy Consulting',
       description:
         'Get expert guidance to implement AI solutions that drive business growth.',
-      icon: <BarChart3 className='h-12 w-12 text-[#ff5e00]' />,
+      Mockup: StrategyMockup,
+      gridClass: 'md:col-span-1',
     },
   ];
 
@@ -429,17 +747,15 @@ function ServicesSection() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className={`rounded-[24px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-[rgba(126,70,37,0.04)] p-8 transition-all hover:border-[#ff5e00] hover:shadow-[0_8px_24px_rgba(255,94,0,0.12)] ${
-                feature.gridClass || ''
-              }`}
+              className={`rounded-[24px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-[rgba(126,70,37,0.04)] p-8 transition-all hover:border-[#ff5e00] hover:shadow-[0_8px_24px_rgba(255,94,0,0.12)] ${feature.gridClass}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
             >
-              <div className='mb-6 flex h-24 items-center justify-center'>
-                {feature.icon}
+              <div className='mb-6'>
+                <feature.Mockup />
               </div>
               <p className='mb-3 font-["Plus_Jakarta_Sans"] text-[22px] font-bold leading-[28px] tracking-[-0.44px] text-[#281f1b]'>
                 {feature.title}
@@ -491,7 +807,7 @@ function PricingSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
   const plans = [
     {
       name: 'Explore AI',
-      price: '$2,500',
+      price: '$2k',
       period: 'one-time',
       description: 'Perfect for businesses starting their AI journey',
       features: [
@@ -505,7 +821,7 @@ function PricingSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
     },
     {
       name: 'Blueprint AI',
-      price: '$8,500',
+      price: '$8k',
       period: '/month',
       description: 'Complete AI strategy and planning for your business',
       features: [
@@ -677,34 +993,13 @@ export default function HomePage() {
   const [isBookingModalOpen, setIsBookingModalOpen] = React.useState(false);
 
   React.useEffect(() => {
-    if (isBookingModalOpen) {
-      const script = document.createElement('script');
-      script.src = 'https://app.cal.com/embed/embed.js';
-      script.async = true;
-      document.head.appendChild(script);
-
-      script.onload = () => {
-        if (window.Cal) {
-          window.Cal('init', 'intro-with-forever-22-studios', {
-            origin: 'https://app.cal.com',
-          });
-          window.Cal.ns['intro-with-forever-22-studios']('inline', {
-            elementOrSelector: '#my-cal-inline-intro-with-forever-22-studios',
-            config: { layout: 'month_view' },
-            calLink: 'forever22studio/intro-with-forever-22-studios',
-          });
-          window.Cal.ns['intro-with-forever-22-studios']('ui', {
-            hideEventTypeDetails: false,
-            layout: 'month_view',
-          });
-        }
-      };
-
-      return () => {
-        document.head.removeChild(script);
-      };
-    }
-  }, [isBookingModalOpen]);
+    (async function () {
+      const cal = await getCalApi({
+        namespace: 'intro-with-forever-22-studios',
+      });
+      cal('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+    })();
+  }, []);
 
   const handleBookCallClick = () => {
     setIsBookingModalOpen(true);
@@ -730,10 +1025,14 @@ export default function HomePage() {
               Book a Discovery Call
             </DialogTitle>
           </DialogHeader>
-          <div
-            id='my-cal-inline-intro-with-forever-22-studios'
-            className='scrollbar-hide h-[600px] w-full overflow-scroll'
-          />
+          <div className='h-[600px] w-full overflow-scroll'>
+            <Cal
+              namespace='intro-with-forever-22-studios'
+              calLink='forever22studio/intro-with-forever-22-studios'
+              style={{ width: '100%', height: '100%', overflow: 'scroll' }}
+              config={{ layout: 'month_view' }}
+            />
+          </div>
         </DialogContent>
       </Dialog>
     </main>
