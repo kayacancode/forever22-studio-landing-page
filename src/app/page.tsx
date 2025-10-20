@@ -23,27 +23,27 @@ import {
 // ================== HERO SECTION ==================
 function HeroSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
   return (
-    <section className='relative w-full overflow-hidden bg-[#fffcfa] py-24'>
-      <div className='relative mx-auto max-w-[1536px] px-12'>
+    <section className='relative w-full overflow-hidden bg-[#fffcfa] py-12 md:py-24'>
+      <div className='relative mx-auto max-w-[1536px] px-4 md:px-12'>
         {/* Content */}
-        <div className='flex flex-col items-center justify-center gap-24'>
-          <div className='flex w-full flex-col items-center justify-center gap-24'>
-            <h1 className='w-full text-center font-["Plus_Jakarta_Sans"] text-[120px] font-bold leading-[120px] tracking-[-2.4px] text-[#281f1b]'>
+        <div className='flex flex-col items-center justify-center gap-8 md:gap-24'>
+          <div className='flex w-full flex-col items-center justify-center gap-8 md:gap-24'>
+            <h1 className='w-full text-center font-["Plus_Jakarta_Sans"] text-[40px] font-bold leading-[44px] tracking-[-1.2px] text-[#281f1b] sm:text-[60px] sm:leading-[64px] md:text-[80px] md:leading-[84px] lg:text-[120px] lg:leading-[120px] lg:tracking-[-2.4px]'>
               Scale Your Business with Artificial Intelligence
             </h1>
 
             {/* CTA Buttons */}
-            <div className='flex items-center justify-center gap-24'>
+            <div className='flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 md:gap-24'>
               <motion.button
                 onClick={onBookCallClick}
-                className='cursor-pointer rounded-[16px] bg-[#ff5e00] px-7 py-3 font-["Plus_Jakarta_Sans"] text-[20px] font-medium leading-[24px] text-[#050200] transition-transform hover:scale-105'
+                className='w-full cursor-pointer rounded-[16px] bg-[#ff5e00] px-6 py-3 font-["Plus_Jakarta_Sans"] text-[16px] font-medium leading-[20px] text-[#050200] transition-transform hover:scale-105 sm:w-auto sm:text-[18px] md:px-7 md:text-[20px] md:leading-[24px]'
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 book discovery call
               </motion.button>
               <motion.button
-                className='cursor-pointer rounded-[16px] bg-[#ff5e00] px-7 py-3 font-["Plus_Jakarta_Sans"] text-[20px] font-medium leading-[24px] text-[#050200] transition-transform hover:scale-105'
+                className='w-full cursor-pointer rounded-[16px] bg-[#ff5e00] px-6 py-3 font-["Plus_Jakarta_Sans"] text-[16px] font-medium leading-[20px] text-[#050200] transition-transform hover:scale-105 sm:w-auto sm:text-[18px] md:px-7 md:text-[20px] md:leading-[24px]'
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -60,13 +60,13 @@ function HeroSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
 // ================== PROBLEM SECTION ==================
 function ProblemSection() {
   return (
-    <section className='relative w-full bg-[#fffcfa] py-24'>
-      <div className='mx-auto flex max-w-[1536px] items-start gap-24 px-12 py-12'>
-        <p className='basis-0 grow font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+    <section className='relative w-full bg-[#fffcfa] py-12 md:py-24'>
+      <div className='mx-auto flex max-w-[1536px] flex-col items-start gap-8 px-4 py-6 md:flex-row md:gap-24 md:px-12 md:py-12'>
+        <p className='basis-0 grow font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b] sm:text-[36px] sm:leading-[40px] md:text-[48px] md:leading-[52px] md:tracking-[-0.96px]'>
           AI is overwhelming. Too many tools. No clear path.
         </p>
         <div className='basis-0 grow'>
-          <p className='pt-2 font-["Plus_Jakarta_Sans"] text-[24px] font-normal leading-[32px] text-[#281f1b]'>
+          <p className='pt-2 font-["Plus_Jakarta_Sans"] text-[18px] font-normal leading-[26px] text-[#281f1b] sm:text-[20px] sm:leading-[28px] md:text-[24px] md:leading-[32px]'>
             Forever 22 helps you adopt Artificial Intelligence efficiently, and
             securely
           </p>
@@ -80,25 +80,25 @@ function ProblemSection() {
 function AIJourneySection() {
   return (
     <section className='relative w-full bg-[#fffcfa] py-12'>
-      <div className='mx-auto flex max-w-[1536px] flex-col items-start gap-12 px-0 py-12'>
-        <p className='w-full text-center font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+      <div className='mx-auto flex max-w-[1536px] flex-col items-start gap-8 px-4 py-6 md:gap-12 md:px-12 md:py-12'>
+        <p className='w-full text-center font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b] sm:text-[36px] sm:leading-[40px] md:text-[48px] md:leading-[52px] md:tracking-[-0.96px]'>
           We help you adopt AI
         </p>
 
         {/* Bento Grid */}
-        <div className='grid w-full grid-cols-1 gap-7 md:grid-cols-2'>
+        <div className='grid w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-7'>
           {/* Card 1: Explore AI */}
           <motion.div
-            className='flex h-[480px] flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+            className='flex h-auto flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-5 pt-5 md:h-[480px] md:p-9 md:pt-9'
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <div className='space-y-2'>
-              <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+              <h3 className='font-["Plus_Jakarta_Sans"] text-[20px] font-bold leading-[24px] tracking-[-0.4px] text-[#281f1b] sm:text-[24px] sm:leading-[28px] md:text-[28px] md:leading-[32px] md:tracking-[-0.56px]'>
                 Explore AI
               </h3>
-              <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+              <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[20px] text-[#281f1b] sm:text-[18px] sm:leading-[22px] md:text-[20px] md:leading-[24px]'>
                 Discover AI opportunities
               </p>
             </div>
@@ -131,17 +131,17 @@ function AIJourneySection() {
 
           {/* Card 2: Blueprint AI */}
           <motion.div
-            className='flex h-[480px] flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+            className='flex h-auto flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-5 pt-5 md:h-[480px] md:p-9 md:pt-9'
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
             <div className='space-y-2'>
-              <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+              <h3 className='font-["Plus_Jakarta_Sans"] text-[20px] font-bold leading-[24px] tracking-[-0.4px] text-[#281f1b] sm:text-[24px] sm:leading-[28px] md:text-[28px] md:leading-[32px] md:tracking-[-0.56px]'>
                 Blueprint AI
               </h3>
-              <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+              <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[20px] text-[#281f1b] sm:text-[18px] sm:leading-[22px] md:text-[20px] md:leading-[24px]'>
                 Make a plan to scale AI across your business and processes.
               </p>
             </div>
@@ -170,17 +170,17 @@ function AIJourneySection() {
 
           {/* Card 3: Implement AI */}
           <motion.div
-            className='flex h-[480px] flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+            className='flex h-auto flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-5 pt-5 md:h-[480px] md:p-9 md:pt-9'
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
             <div className='space-y-2'>
-              <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+              <h3 className='font-["Plus_Jakarta_Sans"] text-[20px] font-bold leading-[24px] tracking-[-0.4px] text-[#281f1b] sm:text-[24px] sm:leading-[28px] md:text-[28px] md:leading-[32px] md:tracking-[-0.56px]'>
                 Implement AI
               </h3>
-              <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+              <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[20px] text-[#281f1b] sm:text-[18px] sm:leading-[22px] md:text-[20px] md:leading-[24px]'>
                 Automate your workflows completely. Build custom solutions to
                 support your business.
               </p>
@@ -204,17 +204,17 @@ function AIJourneySection() {
 
           {/* Card 4: Scale with AI */}
           <motion.div
-            className='flex h-[480px] flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-9 pt-9'
+            className='flex h-auto flex-col overflow-hidden rounded-[20px] border-[1.5px] border-transparent bg-[rgba(126,70,37,0.09)] p-5 pt-5 md:h-[480px] md:p-9 md:pt-9'
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
             <div className='space-y-2'>
-              <h3 className='font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+              <h3 className='font-["Plus_Jakarta_Sans"] text-[20px] font-bold leading-[24px] tracking-[-0.4px] text-[#281f1b] sm:text-[24px] sm:leading-[28px] md:text-[28px] md:leading-[32px] md:tracking-[-0.56px]'>
                 Scale with AI
               </h3>
-              <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[24px] text-[#281f1b]'>
+              <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[20px] text-[#281f1b] sm:text-[18px] sm:leading-[22px] md:text-[20px] md:leading-[24px]'>
                 create a micro SaaS that creates additional revenue for your
                 business.
               </p>
@@ -278,28 +278,31 @@ function TestimonialsSection() {
   ];
 
   return (
-    <section className='relative w-full overflow-hidden bg-[#fffcfa] py-24'>
-      <div className='flex flex-col gap-12'>
-        <p className='mx-auto max-w-[1260px] text-center font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+    <section className='relative w-full overflow-hidden bg-[#fffcfa] py-12 md:py-24'>
+      <div className='flex flex-col gap-8 md:gap-12'>
+        <p className='mx-auto max-w-[1260px] px-4 text-center font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b] sm:text-[36px] sm:leading-[40px] md:text-[48px] md:leading-[52px] md:tracking-[-0.96px]'>
           See what Forever 22 can do.
         </p>
 
         <div className='relative w-full overflow-hidden'>
-          <div className='scrollbar-hide flex gap-7 overflow-x-auto px-12 pb-4 snap-x snap-mandatory'>
+          <div className='scrollbar-hide flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory md:gap-7 md:px-12'>
             {testimonials.map((testimonial, index) => (
-              <div key={index} className='w-[480px] flex-none snap-start'>
-                <div className='flex h-full min-h-[280px] flex-col justify-between rounded-[20px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-[rgba(126,70,37,0.09)] p-9'>
-                  <p className='mb-6 font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[32px] text-[#281f1b]'>
+              <div
+                key={index}
+                className='w-[300px] flex-none snap-start sm:w-[380px] md:w-[480px]'
+              >
+                <div className='flex h-full min-h-[280px] flex-col justify-between rounded-[20px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-[rgba(126,70,37,0.09)] p-5 md:p-9'>
+                  <p className='mb-6 font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[24px] text-[#281f1b] sm:text-[18px] sm:leading-[28px] md:text-[20px] md:leading-[32px]'>
                     "{testimonial.quote}"
                   </p>
                   <div>
-                    <p className='font-["Plus_Jakarta_Sans"] text-[20px] font-bold leading-[24px] tracking-[-0.4px] text-[#281f1b]'>
+                    <p className='font-["Plus_Jakarta_Sans"] text-[16px] font-bold leading-[20px] tracking-[-0.3px] text-[#281f1b] md:text-[20px] md:leading-[24px] md:tracking-[-0.4px]'>
                       {testimonial.author}
                     </p>
-                    <p className='font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] text-[#281f1b] opacity-70'>
+                    <p className='font-["Plus_Jakarta_Sans"] text-[14px] font-normal leading-[20px] text-[#281f1b] opacity-70 md:text-[17px] md:leading-[24px]'>
                       {testimonial.role}
                     </p>
-                    <p className='font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] text-[#ff5e00]'>
+                    <p className='font-["Plus_Jakarta_Sans"] text-[14px] font-normal leading-[20px] text-[#ff5e00] md:text-[17px] md:leading-[24px]'>
                       {testimonial.company}
                     </p>
                   </div>
@@ -316,16 +319,16 @@ function TestimonialsSection() {
 // ================== ABOUT US SECTION ==================
 function AboutUsSection() {
   return (
-    <section className='relative w-full bg-[#fffcfa] px-12 py-24'>
-      <div className='mx-auto flex max-w-[1200px] flex-col items-center gap-16'>
+    <section className='relative w-full bg-[#fffcfa] px-4 py-12 md:px-12 md:py-24'>
+      <div className='mx-auto flex max-w-[1200px] flex-col items-center gap-8 md:gap-16'>
         <div className='flex max-w-[900px] flex-col items-center gap-4'>
-          <p className='text-center font-["Plus_Jakarta_Sans"] text-[14px] font-semibold uppercase tracking-[1.5px] text-[#ff5e00]'>
+          <p className='text-center font-["Plus_Jakarta_Sans"] text-[12px] font-semibold uppercase tracking-[1.5px] text-[#ff5e00] md:text-[14px]'>
             About us
           </p>
-          <h2 className='text-center font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+          <h2 className='text-center font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b] sm:text-[36px] sm:leading-[40px] md:text-[48px] md:leading-[52px] md:tracking-[-0.96px]'>
             A true builder's company at heart.
           </h2>
-          <p className='max-w-[700px] text-center font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[28px] text-[#281f1b] opacity-70'>
+          <p className='max-w-[700px] text-center font-["Plus_Jakarta_Sans"] text-[15px] font-normal leading-[24px] text-[#281f1b] opacity-70 md:text-[17px] md:leading-[28px]'>
             Forever 22 specializes in building intelligent automation solutions
             that transform how businesses operate. Based in Chicago, our team
             creates custom AI agents, workflow automations, and
@@ -334,10 +337,10 @@ function AboutUsSection() {
         </div>
 
         {/* Two Column Layout */}
-        <div className='grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 lg:grid-cols-2'>
+        <div className='grid w-full max-w-[1200px] grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12'>
           {/* Left - Our Core */}
-          <div className='rounded-[24px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-white p-12'>
-            <h3 className='mb-6 font-["Plus_Jakarta_Sans"] text-[34px] font-bold leading-[40px] tracking-[-0.68px] text-[#281f1b]'>
+          <div className='rounded-[24px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-white p-6 md:p-12'>
+            <h3 className='mb-6 font-["Plus_Jakarta_Sans"] text-[24px] font-bold leading-[28px] tracking-[-0.48px] text-[#281f1b] sm:text-[28px] sm:leading-[32px] md:text-[34px] md:leading-[40px] md:tracking-[-0.68px]'>
               Our Core
             </h3>
             <div className='flex flex-col gap-5'>
@@ -418,36 +421,36 @@ function CaseStudiesSection() {
   ];
 
   return (
-    <section className='relative w-full bg-[#fffcfa] px-0 py-24'>
-      <div className='flex flex-col gap-12'>
-        <p className='w-full text-center font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+    <section className='relative w-full bg-[#fffcfa] px-0 py-12 md:py-24'>
+      <div className='flex flex-col gap-8 md:gap-12'>
+        <p className='w-full px-4 text-center font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b] sm:text-[36px] sm:leading-[40px] md:text-[48px] md:leading-[52px] md:tracking-[-0.96px]'>
           Selected Case Studies
         </p>
 
-        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-7 px-12 md:grid-cols-3'>
+        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-4 px-4 md:grid-cols-3 md:gap-7 md:px-12'>
           {caseStudies.map((study, index) => (
             <Card
               key={index}
-              className='rounded-[20px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-white p-9 transition-shadow hover:shadow-lg'
+              className='rounded-[20px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-white p-5 transition-shadow hover:shadow-lg md:p-9'
             >
-              <div className='flex flex-col gap-6'>
+              <div className='flex flex-col gap-4 md:gap-6'>
                 <div>
                   <div className='mb-4 h-1 w-12 rounded-full bg-[#ff5e00]' />
-                  <p className='mb-2 font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b]'>
+                  <p className='mb-2 font-["Plus_Jakarta_Sans"] text-[20px] font-bold leading-[24px] tracking-[-0.4px] text-[#281f1b] sm:text-[24px] sm:leading-[28px] md:text-[28px] md:leading-[32px] md:tracking-[-0.56px]'>
                     {study.title}
                   </p>
-                  <p className='font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] text-[#ff5e00]'>
+                  <p className='font-["Plus_Jakarta_Sans"] text-[15px] font-normal leading-[20px] text-[#ff5e00] md:text-[17px] md:leading-[24px]'>
                     {study.company}
                   </p>
                 </div>
 
-                <div className='rounded-[16px] bg-[rgba(126,70,37,0.09)] p-5'>
-                  <p className='font-["Plus_Jakarta_Sans"] text-[24px] font-bold leading-[28px] tracking-[-0.48px] text-[#281f1b]'>
+                <div className='rounded-[16px] bg-[rgba(126,70,37,0.09)] p-4 md:p-5'>
+                  <p className='font-["Plus_Jakarta_Sans"] text-[18px] font-bold leading-[22px] tracking-[-0.36px] text-[#281f1b] sm:text-[20px] sm:leading-[24px] md:text-[24px] md:leading-[28px] md:tracking-[-0.48px]'>
                     {study.metric}
                   </p>
                 </div>
 
-                <p className='font-["Plus_Jakarta_Sans"] text-[17px] font-normal leading-[24px] text-[#281f1b]'>
+                <p className='font-["Plus_Jakarta_Sans"] text-[15px] font-normal leading-[22px] text-[#281f1b] md:text-[17px] md:leading-[24px]'>
                   {study.description}
                 </p>
 
@@ -731,36 +734,36 @@ function ServicesSection() {
   ];
 
   return (
-    <section className='relative w-full bg-[#fffcfa] px-0 py-24'>
-      <div className='flex flex-col gap-12'>
-        <div className='w-full text-center'>
-          <p className='mb-4 font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+    <section className='relative w-full bg-[#fffcfa] px-0 py-12 md:py-24'>
+      <div className='flex flex-col gap-8 md:gap-12'>
+        <div className='w-full px-4 text-center'>
+          <p className='mb-4 font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b] sm:text-[36px] sm:leading-[40px] md:text-[48px] md:leading-[52px] md:tracking-[-0.96px]'>
             Smarter Services{' '}
             <span className='italic text-[#a13b00]'>Built with AI</span>
           </p>
-          <p className='mx-auto max-w-[800px] font-["Plus_Jakarta_Sans"] text-[20px] font-normal leading-[32px] text-[#281f1b] opacity-70'>
+          <p className='mx-auto max-w-[800px] px-4 font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[24px] text-[#281f1b] opacity-70 sm:text-[18px] sm:leading-[28px] md:text-[20px] md:leading-[32px]'>
             Everything you need to automate operations, boost productivity.
           </p>
         </div>
 
-        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-6 px-12 md:grid-cols-3'>
+        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-4 px-4 md:grid-cols-3 md:gap-6 md:px-12'>
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className={`rounded-[24px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-[rgba(126,70,37,0.04)] p-8 transition-all hover:border-[#ff5e00] hover:shadow-[0_8px_24px_rgba(255,94,0,0.12)] ${feature.gridClass}`}
+              className={`rounded-[24px] border-[1.5px] border-[rgba(110,87,73,0.2)] bg-[rgba(126,70,37,0.04)] p-5 transition-all hover:border-[#ff5e00] hover:shadow-[0_8px_24px_rgba(255,94,0,0.12)] md:p-8 ${feature.gridClass}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
             >
-              <div className='mb-6'>
+              <div className='mb-4 md:mb-6'>
                 <feature.Mockup />
               </div>
-              <p className='mb-3 font-["Plus_Jakarta_Sans"] text-[22px] font-bold leading-[28px] tracking-[-0.44px] text-[#281f1b]'>
+              <p className='mb-3 font-["Plus_Jakarta_Sans"] text-[18px] font-bold leading-[22px] tracking-[-0.36px] text-[#281f1b] sm:text-[20px] sm:leading-[24px] md:text-[22px] md:leading-[28px] md:tracking-[-0.44px]'>
                 {feature.title}
               </p>
-              <p className='font-["Plus_Jakarta_Sans"] text-[15px] font-normal leading-[24px] text-[#281f1b] opacity-70'>
+              <p className='font-["Plus_Jakarta_Sans"] text-[14px] font-normal leading-[20px] text-[#281f1b] opacity-70 md:text-[15px] md:leading-[24px]'>
                 {feature.description}
               </p>
             </motion.div>
@@ -775,15 +778,15 @@ function ServicesSection() {
 function MarathonSprintSection() {
   return (
     <motion.section
-      className='relative flex w-full flex-col items-center gap-16 bg-[#fffcfa] px-12 py-32'
+      className='relative flex w-full flex-col items-center gap-8 bg-[#fffcfa] px-4 py-16 md:gap-16 md:px-12 md:py-32'
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className='flex w-full max-w-[1000px] flex-col items-center gap-12'>
+      <div className='flex w-full max-w-[1000px] flex-col items-center gap-8 md:gap-12'>
         <div className='text-center'>
-          <h2 className='mb-6 font-["Plus_Jakarta_Sans"] text-[80px] font-bold leading-[1.1] tracking-[-2px]'>
+          <h2 className='mb-6 font-["Plus_Jakarta_Sans"] text-[36px] font-bold leading-[1.1] tracking-[-1.2px] sm:text-[50px] sm:tracking-[-1.5px] md:text-[80px] md:tracking-[-2px]'>
             <span className='text-[#d4c5b9] opacity-40'>It's a </span>
             <span className='text-[#281f1b]'>Marathon.</span>
             <br />
@@ -792,7 +795,7 @@ function MarathonSprintSection() {
           </h2>
         </div>
 
-        <p className='max-w-[800px] text-center font-["Plus_Jakarta_Sans"] text-[22px] font-normal leading-[36px] text-[#281f1b] opacity-70'>
+        <p className='max-w-[800px] px-4 text-center font-["Plus_Jakarta_Sans"] text-[16px] font-normal leading-[28px] text-[#281f1b] opacity-70 sm:text-[18px] sm:leading-[32px] md:text-[22px] md:leading-[36px]'>
           Great products aren't simply built on an assembly line. Some demand
           continuous refinement, while others require focused precision — that's
           why we have multiple ways to work with us.
@@ -850,22 +853,22 @@ function PricingSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
   ];
 
   return (
-    <section className='relative w-full bg-[#fffcfa] px-0 py-24'>
-      <div className='flex flex-col gap-12'>
-        <div className='w-full text-center'>
-          <p className='mb-4 font-["Plus_Jakarta_Sans"] text-[48px] font-bold leading-[52px] tracking-[-0.96px] text-[#281f1b]'>
+    <section className='relative w-full bg-[#fffcfa] px-0 py-12 md:py-24'>
+      <div className='flex flex-col gap-8 md:gap-12'>
+        <div className='w-full px-4 text-center'>
+          <p className='mb-4 font-["Plus_Jakarta_Sans"] text-[28px] font-bold leading-[32px] tracking-[-0.56px] text-[#281f1b] sm:text-[36px] sm:leading-[40px] md:text-[48px] md:leading-[52px] md:tracking-[-0.96px]'>
             Transparent Pricing
           </p>
-          <p className='mx-auto max-w-[800px] font-["Plus_Jakarta_Sans"] text-[24px] font-normal leading-[32px] text-[#281f1b]'>
+          <p className='mx-auto max-w-[800px] px-4 font-["Plus_Jakarta_Sans"] text-[18px] font-normal leading-[26px] text-[#281f1b] sm:text-[20px] sm:leading-[28px] md:text-[24px] md:leading-[32px]'>
             Choose the plan that fits your automation needs
           </p>
         </div>
 
-        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-7 px-12 md:grid-cols-3'>
+        <div className='mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-4 px-4 md:grid-cols-3 md:gap-7 md:px-12'>
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative rounded-[20px] border-[2px] p-9 transition-all hover:shadow-xl ${
+              className={`relative rounded-[20px] border-[2px] p-5 transition-all hover:shadow-xl md:p-9 ${
                 plan.highlighted
                   ? 'border-[#ff5e00] bg-[#ff5e00]'
                   : 'border-[rgba(110,87,73,0.2)] bg-white hover:border-[#ff5e00]'
@@ -969,18 +972,18 @@ function PricingSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
 // ================== FOOTER SECTION ==================
 function FooterSection({ onBookCallClick }: { onBookCallClick?: () => void }) {
   return (
-    <footer className='relative flex w-full flex-col items-center justify-center gap-12 bg-[#fffcfa] px-0 py-24'>
-      <p className='max-w-[720px] text-center font-["Plus_Jakarta_Sans"] text-[34px] font-bold leading-[40px] tracking-[-0.68px] text-[#281f1b]'>
+    <footer className='relative flex w-full flex-col items-center justify-center gap-8 bg-[#fffcfa] px-4 py-12 md:gap-12 md:py-24'>
+      <p className='max-w-[720px] px-4 text-center font-["Plus_Jakarta_Sans"] text-[24px] font-bold leading-[28px] tracking-[-0.48px] text-[#281f1b] sm:text-[28px] sm:leading-[32px] md:text-[34px] md:leading-[40px] md:tracking-[-0.68px]'>
         Don't get left behind.
       </p>
       <button
         onClick={onBookCallClick}
-        className='cursor-pointer rounded-[16px] bg-[#ff5e00] px-8 py-4 font-["Plus_Jakarta_Sans"] text-[20px] font-medium leading-[24px] text-[#050200] transition-transform hover:scale-105'
+        className='cursor-pointer rounded-[16px] bg-[#ff5e00] px-6 py-3 font-["Plus_Jakarta_Sans"] text-[16px] font-medium leading-[20px] text-[#050200] transition-transform hover:scale-105 sm:px-8 sm:py-4 sm:text-[18px] sm:leading-[22px] md:text-[20px] md:leading-[24px]'
       >
         Book Call
       </button>
-      <div className='mt-6 w-full max-w-[1080px] border-t border-[rgba(110,87,73,0.2)] pt-6'>
-        <p className='text-center font-["Plus_Jakarta_Sans"] text-[14px] font-normal text-[#281f1b] opacity-60'>
+      <div className='mt-6 w-full max-w-[1080px] border-t border-[rgba(110,87,73,0.2)] px-4 pt-6'>
+        <p className='text-center font-["Plus_Jakarta_Sans"] text-[12px] font-normal text-[#281f1b] opacity-60 md:text-[14px]'>
           © 2025 Forever 22 LLC. All rights reserved.
         </p>
       </div>
