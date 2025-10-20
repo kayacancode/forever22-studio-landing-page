@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import * as React from 'react';
 
@@ -164,7 +165,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className='font-primary antialiased bg-white'>{children}</body>
+      <body className='font-primary antialiased bg-white'>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
