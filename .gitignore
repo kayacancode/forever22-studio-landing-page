@@ -43,3 +43,10 @@ sitemap-*.xml
 
 # VSCode history extension
 .history/
+
+# Playwright browser automation
+.playwright-mcp/
+
+# Backup files
+src/app/page-new.tsx
+src/app/page-old-backup.tsx
